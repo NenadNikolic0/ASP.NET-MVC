@@ -1,0 +1,90 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="hopeCRMModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Customer">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Guid" Nullable="false" />
+    <Property Name="anywhereid" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="backupcompany" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="backupname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="backupsince" Type="DateTime" Precision="7" />
+    <Property Name="backupsize" Type="Int32" />
+    <Property Name="cashifc" Type="Boolean" Nullable="false" />
+    <Property Name="cashifcex" Type="Boolean" Nullable="false" />
+    <Property Name="cashname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ccardifc" Type="Boolean" Nullable="false" />
+    <Property Name="ccardname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="channelmanagerifc" Type="Boolean" Nullable="false" />
+    <Property Name="channelmanagerifcex" Type="Boolean" Nullable="false" />
+    <Property Name="channelmanagername" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="city" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="cloud" Type="Boolean" Nullable="false" />
+    <Property Name="cloudbackup" Type="Boolean" Nullable="false" />
+    <Property Name="cloudcompany" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="cloudserver" Type="String" MaxLength="120" FixedLength="false" Unicode="true" />
+    <Property Name="cloudsince" Type="DateTime" Precision="7" />
+    <Property Name="cloudtsplusserialno" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="cloudtsplususer" Type="Byte" />
+    <Property Name="cloudtsplusversion" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="clouduser" Type="Byte" />
+    <Property Name="contractpartner" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="countryid" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
+    <Property Name="countryiso" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
+    <Property Name="customertype" Type="Byte" />
+    <Property Name="dateofpurchase" Type="DateTime" Precision="7" />
+    <Property Name="dealer" Type="Byte" />
+    <Property Name="doorifc" Type="Boolean" Nullable="false" />
+    <Property Name="doorname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="easystandpro" Type="Byte" />
+    <Property Name="email" Type="String" MaxLength="120" FixedLength="false" Unicode="true" />
+    <Property Name="fax" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="fibuifc" Type="Boolean" Nullable="false" />
+    <Property Name="fibuname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="freshdeskemail" Type="String" MaxLength="120" FixedLength="false" Unicode="true" />
+    <Property Name="hopewebifc" Type="Boolean" Nullable="false" />
+    <Property Name="hopewebifcid" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="hopewebifcversion" Type="Byte" />
+    <Property Name="hotline" Type="Boolean" Nullable="false" />
+    <Property Name="hotline24" Type="Boolean" Nullable="false" />
+    <Property Name="hotline24since" Type="DateTime" Precision="7" />
+    <Property Name="hotlinesince" Type="DateTime" Precision="7" />
+    <Property Name="internet" Type="String" MaxLength="120" FixedLength="false" Unicode="true" />
+    <Property Name="lastupdate" Type="DateTime" Precision="7" />
+    <Property Name="lastupdatecheck" Type="DateTime" Precision="7" />
+    <Property Name="licend" Type="Boolean" Nullable="false" />
+    <Property Name="licenddate" Type="DateTime" Precision="7" />
+    <Property Name="maxrooms" Type="Int32" />
+    <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="name1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="name2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="netstations" Type="Byte" />
+    <Property Name="nobigupdate" Type="Boolean" Nullable="false" />
+    <Property Name="noupdate" Type="Boolean" Nullable="false" />
+    <Property Name="number" Type="Int64" />
+    <Property Name="paytvifc" Type="Boolean" Nullable="false" />
+    <Property Name="phone" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="phoneifc" Type="Boolean" Nullable="false" />
+    <Property Name="phoneifcex" Type="Boolean" Nullable="false" />
+    <Property Name="phonename" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="regcardifc" Type="Boolean" Nullable="false" />
+    <Property Name="regcardname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="serialno" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="street" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="streetno" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="teamviewerid" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="teamviewerpwd" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="updatemanu" Type="Boolean" Nullable="false" />
+    <Property Name="updates" Type="Boolean" Nullable="false" />
+    <Property Name="updatessince" Type="DateTime" Precision="7" />
+    <Property Name="versionact" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="versionlast" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="versiontype" Type="Byte" />
+    <Property Name="zip" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+    <Property Name="feedback" Type="Boolean" Nullable="false" />
+    <Property Name="feedbackname" Type="String" MaxLength="120" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityContainer Name="hopeCRMEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Customers" EntityType="Self.Customer" />
+  </EntityContainer>
+</Schema>
