@@ -11,7 +11,18 @@ namespace Pdf_project.Controllers
         // GET: Dashboard
         public ActionResult Index()
         {
-            return View();
+            //Check if user is logged, if is open dashboard
+            if (Convert.ToInt32(Session["isLoggedIn"]) == 1)
+            {
+                return View();
+            }
+
+            //If not open login page
+            else
+            {
+                return RedirectToAction("index", "home");
+            }
+            
         }
     }
 }
