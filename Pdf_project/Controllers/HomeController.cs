@@ -40,7 +40,7 @@ namespace Pdf_project.Controllers
             //Define empty User object 
             User user = new User();
 
-            //Checking if customer exists or not and filling Result variable with corresponding value
+            //Checking if customer exists or not and filling user object with corresponding value
             if (customer.Count!=0)
             {
                 Result = "True";
