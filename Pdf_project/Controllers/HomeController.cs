@@ -6,8 +6,9 @@ using System.Web.Mvc;
 using System.Data.Entity;
 using Pdf_project.Database;
 using Pdf_project.Models;
-
-
+using System.IO;
+using System.Text;
+using System.Globalization;
 
 namespace Pdf_project.Controllers
 {
@@ -47,6 +48,17 @@ namespace Pdf_project.Controllers
                 user.Result = Result;
                 user.UserZip = customer[0].zip.ToString().Trim();
                 user.UserEmail = customer[0].email.ToString().Trim();
+
+
+                //Writting into log file (user zip, email, date and time)
+                using (StreamWriter writer = new StreamWriter(Server.MapPath("~/Log/log.txt"), true))
+                {
+                    StringBuilder sb = new StringBuilder();
+                    sb.Append(user.UserZip + " " + user.UserEmail + " " + DateTime.Now.ToString("dd.MM.yyyy hh:mm tt",CultureInfo.InvariantCulture));
+                    writer.WriteLine(sb.ToString());
+                }
+
+
             }
             else
             {
@@ -54,8 +66,6 @@ namespace Pdf_project.Controllers
                 user.Result = Result;              
             }
 
-           
-            
 
             //Returning user as result in Json format
             return Json(user);
