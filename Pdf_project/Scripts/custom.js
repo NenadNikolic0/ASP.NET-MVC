@@ -16,13 +16,13 @@ jQuery(document).ready(function () {
             function (data) {
 
                 //If result is True redirect to Dashboard, else show error message
-                if (data == 'True') {
+                if (data.Result == 'True') {
 
                     //Set error message to invisible              
                     jQuery('.error-message').css('display', 'none');
 
                     //Redirect to dashboard
-                    window.location.href = '/dashboard'
+                    window.location.href = '/dashboard?zip=' + data.UserZip + '&email=' + data.UserEmail;
                 }
                 else {
                     //Set error message visible

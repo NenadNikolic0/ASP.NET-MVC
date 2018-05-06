@@ -15,7 +15,7 @@
 
     <div class="col-xs-3">
         <div class="col-xs-10">
-            <span class="glyphicon glyphicon-user user-logout">&nbsp;&nbsp;</span>
+            <span class="glyphicon glyphicon-user user-logout">&nbsp;@ViewBag.Zip</span>
         </div>
 
         <div class="col-xs-2">
@@ -24,6 +24,10 @@
     </div>
 </div>
 
+<!--Dashboard body-->
+<div class="container dashboard-body">
+
+</div>
 <!--Dashboard footer-->
 <div class="row dashboard-footer text-center">
     <span class="product-rights">&#169;&nbsp;&nbsp;2018</span>
@@ -33,11 +37,12 @@
 <!--Logout div-->
 <div class="row logout-div">
     <div class="row logout-div-body">
-
+        <span class="zip">@ViewBag.Zip</span>
+        <span class="email">@ViewBag.Email</span>
     </div>
 
     <div class="row logout-div-footer text-right">
-        <button class="btn btn-default signout-button">Sign out</button>
+        <a href="/" class="btn btn-default signout-button">Sign out</a>
     </div>
 
 </div>

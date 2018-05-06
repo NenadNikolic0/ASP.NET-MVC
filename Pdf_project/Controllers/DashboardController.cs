@@ -14,6 +14,8 @@ namespace Pdf_project.Controllers
             //Check if user is logged, if is open dashboard
             if (Convert.ToInt32(Session["isLoggedIn"]) == 1)
             {
+                ViewBag.Zip = Request["zip"].ToString().Trim();
+                ViewBag.Email = Request["email"].ToString().Trim(); 
                 return View();
             }
 
