@@ -1,0 +1,90 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="hopeCRMModelStoreContainer" CdmEntityContainer="hopeCRMEntitiesSecond">
+    <EntitySetMapping Name="Customers">
+      <EntityTypeMapping TypeName="hopeCRMModel.Customer">
+        <MappingFragment StoreEntitySet="Customer">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="anywhereid" ColumnName="anywhereid" />
+          <ScalarProperty Name="backupcompany" ColumnName="backupcompany" />
+          <ScalarProperty Name="backupname" ColumnName="backupname" />
+          <ScalarProperty Name="backupsince" ColumnName="backupsince" />
+          <ScalarProperty Name="backupsize" ColumnName="backupsize" />
+          <ScalarProperty Name="cashifc" ColumnName="cashifc" />
+          <ScalarProperty Name="cashifcex" ColumnName="cashifcex" />
+          <ScalarProperty Name="cashname" ColumnName="cashname" />
+          <ScalarProperty Name="ccardifc" ColumnName="ccardifc" />
+          <ScalarProperty Name="ccardname" ColumnName="ccardname" />
+          <ScalarProperty Name="channelmanagerifc" ColumnName="channelmanagerifc" />
+          <ScalarProperty Name="channelmanagerifcex" ColumnName="channelmanagerifcex" />
+          <ScalarProperty Name="channelmanagername" ColumnName="channelmanagername" />
+          <ScalarProperty Name="city" ColumnName="city" />
+          <ScalarProperty Name="cloud" ColumnName="cloud" />
+          <ScalarProperty Name="cloudbackup" ColumnName="cloudbackup" />
+          <ScalarProperty Name="cloudcompany" ColumnName="cloudcompany" />
+          <ScalarProperty Name="cloudserver" ColumnName="cloudserver" />
+          <ScalarProperty Name="cloudsince" ColumnName="cloudsince" />
+          <ScalarProperty Name="cloudtsplusserialno" ColumnName="cloudtsplusserialno" />
+          <ScalarProperty Name="cloudtsplususer" ColumnName="cloudtsplususer" />
+          <ScalarProperty Name="cloudtsplusversion" ColumnName="cloudtsplusversion" />
+          <ScalarProperty Name="clouduser" ColumnName="clouduser" />
+          <ScalarProperty Name="contractpartner" ColumnName="contractpartner" />
+          <ScalarProperty Name="countryid" ColumnName="countryid" />
+          <ScalarProperty Name="countryiso" ColumnName="countryiso" />
+          <ScalarProperty Name="customertype" ColumnName="customertype" />
+          <ScalarProperty Name="dateofpurchase" ColumnName="dateofpurchase" />
+          <ScalarProperty Name="dealer" ColumnName="dealer" />
+          <ScalarProperty Name="doorifc" ColumnName="doorifc" />
+          <ScalarProperty Name="doorname" ColumnName="doorname" />
+          <ScalarProperty Name="easystandpro" ColumnName="easystandpro" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="fax" ColumnName="fax" />
+          <ScalarProperty Name="fibuifc" ColumnName="fibuifc" />
+          <ScalarProperty Name="fibuname" ColumnName="fibuname" />
+          <ScalarProperty Name="freshdeskemail" ColumnName="freshdeskemail" />
+          <ScalarProperty Name="hopewebifc" ColumnName="hopewebifc" />
+          <ScalarProperty Name="hopewebifcid" ColumnName="hopewebifcid" />
+          <ScalarProperty Name="hopewebifcversion" ColumnName="hopewebifcversion" />
+          <ScalarProperty Name="hotline" ColumnName="hotline" />
+          <ScalarProperty Name="hotline24" ColumnName="hotline24" />
+          <ScalarProperty Name="hotline24since" ColumnName="hotline24since" />
+          <ScalarProperty Name="hotlinesince" ColumnName="hotlinesince" />
+          <ScalarProperty Name="internet" ColumnName="internet" />
+          <ScalarProperty Name="lastupdate" ColumnName="lastupdate" />
+          <ScalarProperty Name="lastupdatecheck" ColumnName="lastupdatecheck" />
+          <ScalarProperty Name="licend" ColumnName="licend" />
+          <ScalarProperty Name="licenddate" ColumnName="licenddate" />
+          <ScalarProperty Name="maxrooms" ColumnName="maxrooms" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="name1" ColumnName="name1" />
+          <ScalarProperty Name="name2" ColumnName="name2" />
+          <ScalarProperty Name="netstations" ColumnName="netstations" />
+          <ScalarProperty Name="nobigupdate" ColumnName="nobigupdate" />
+          <ScalarProperty Name="noupdate" ColumnName="noupdate" />
+          <ScalarProperty Name="number" ColumnName="number" />
+          <ScalarProperty Name="paytvifc" ColumnName="paytvifc" />
+          <ScalarProperty Name="phone" ColumnName="phone" />
+          <ScalarProperty Name="phoneifc" ColumnName="phoneifc" />
+          <ScalarProperty Name="phoneifcex" ColumnName="phoneifcex" />
+          <ScalarProperty Name="phonename" ColumnName="phonename" />
+          <ScalarProperty Name="regcardifc" ColumnName="regcardifc" />
+          <ScalarProperty Name="regcardname" ColumnName="regcardname" />
+          <ScalarProperty Name="serialno" ColumnName="serialno" />
+          <ScalarProperty Name="street" ColumnName="street" />
+          <ScalarProperty Name="streetno" ColumnName="streetno" />
+          <ScalarProperty Name="teamviewerid" ColumnName="teamviewerid" />
+          <ScalarProperty Name="teamviewerpwd" ColumnName="teamviewerpwd" />
+          <ScalarProperty Name="updatemanu" ColumnName="updatemanu" />
+          <ScalarProperty Name="updates" ColumnName="updates" />
+          <ScalarProperty Name="updatessince" ColumnName="updatessince" />
+          <ScalarProperty Name="versionact" ColumnName="versionact" />
+          <ScalarProperty Name="versionlast" ColumnName="versionlast" />
+          <ScalarProperty Name="versiontype" ColumnName="versiontype" />
+          <ScalarProperty Name="zip" ColumnName="zip" />
+          <ScalarProperty Name="feedback" ColumnName="feedback" />
+          <ScalarProperty Name="feedbackname" ColumnName="feedbackname" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

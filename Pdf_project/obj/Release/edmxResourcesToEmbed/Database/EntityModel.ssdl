@@ -1,0 +1,90 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="hopeCRMModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Customer">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="anywhereid" Type="nvarchar" MaxLength="20" />
+    <Property Name="backupcompany" Type="nvarchar" MaxLength="50" />
+    <Property Name="backupname" Type="nvarchar" MaxLength="50" />
+    <Property Name="backupsince" Type="datetime2" Precision="7" />
+    <Property Name="backupsize" Type="int" />
+    <Property Name="cashifc" Type="bit" Nullable="false" />
+    <Property Name="cashifcex" Type="bit" Nullable="false" />
+    <Property Name="cashname" Type="nvarchar" MaxLength="50" />
+    <Property Name="ccardifc" Type="bit" Nullable="false" />
+    <Property Name="ccardname" Type="nvarchar" MaxLength="50" />
+    <Property Name="channelmanagerifc" Type="bit" Nullable="false" />
+    <Property Name="channelmanagerifcex" Type="bit" Nullable="false" />
+    <Property Name="channelmanagername" Type="nvarchar" MaxLength="50" />
+    <Property Name="city" Type="nvarchar" MaxLength="50" />
+    <Property Name="cloud" Type="bit" Nullable="false" />
+    <Property Name="cloudbackup" Type="bit" Nullable="false" />
+    <Property Name="cloudcompany" Type="nvarchar" MaxLength="50" />
+    <Property Name="cloudserver" Type="nvarchar" MaxLength="120" />
+    <Property Name="cloudsince" Type="datetime2" Precision="7" />
+    <Property Name="cloudtsplusserialno" Type="nvarchar" MaxLength="30" />
+    <Property Name="cloudtsplususer" Type="tinyint" />
+    <Property Name="cloudtsplusversion" Type="nvarchar" MaxLength="20" />
+    <Property Name="clouduser" Type="tinyint" />
+    <Property Name="contractpartner" Type="nvarchar" MaxLength="50" />
+    <Property Name="countryid" Type="nvarchar" MaxLength="3" />
+    <Property Name="countryiso" Type="nvarchar" MaxLength="3" />
+    <Property Name="customertype" Type="tinyint" />
+    <Property Name="dateofpurchase" Type="datetime2" Precision="7" />
+    <Property Name="dealer" Type="tinyint" />
+    <Property Name="doorifc" Type="bit" Nullable="false" />
+    <Property Name="doorname" Type="nvarchar" MaxLength="50" />
+    <Property Name="easystandpro" Type="tinyint" />
+    <Property Name="email" Type="nvarchar" MaxLength="120" />
+    <Property Name="fax" Type="nvarchar" MaxLength="30" />
+    <Property Name="fibuifc" Type="bit" Nullable="false" />
+    <Property Name="fibuname" Type="nvarchar" MaxLength="50" />
+    <Property Name="freshdeskemail" Type="nvarchar" MaxLength="120" />
+    <Property Name="hopewebifc" Type="bit" Nullable="false" />
+    <Property Name="hopewebifcid" Type="nvarchar" MaxLength="20" />
+    <Property Name="hopewebifcversion" Type="tinyint" />
+    <Property Name="hotline" Type="bit" Nullable="false" />
+    <Property Name="hotline24" Type="bit" Nullable="false" />
+    <Property Name="hotline24since" Type="datetime2" Precision="7" />
+    <Property Name="hotlinesince" Type="datetime2" Precision="7" />
+    <Property Name="internet" Type="nvarchar" MaxLength="120" />
+    <Property Name="lastupdate" Type="datetime2" Precision="7" />
+    <Property Name="lastupdatecheck" Type="datetime2" Precision="7" />
+    <Property Name="licend" Type="bit" Nullable="false" />
+    <Property Name="licenddate" Type="datetime2" Precision="7" />
+    <Property Name="maxrooms" Type="int" />
+    <Property Name="name" Type="nvarchar" MaxLength="50" />
+    <Property Name="name1" Type="nvarchar" MaxLength="50" />
+    <Property Name="name2" Type="nvarchar" MaxLength="50" />
+    <Property Name="netstations" Type="tinyint" />
+    <Property Name="nobigupdate" Type="bit" Nullable="false" />
+    <Property Name="noupdate" Type="bit" Nullable="false" />
+    <Property Name="number" Type="bigint" />
+    <Property Name="paytvifc" Type="bit" Nullable="false" />
+    <Property Name="phone" Type="nvarchar" MaxLength="30" />
+    <Property Name="phoneifc" Type="bit" Nullable="false" />
+    <Property Name="phoneifcex" Type="bit" Nullable="false" />
+    <Property Name="phonename" Type="nvarchar" MaxLength="50" />
+    <Property Name="regcardifc" Type="bit" Nullable="false" />
+    <Property Name="regcardname" Type="nvarchar" MaxLength="50" />
+    <Property Name="serialno" Type="nvarchar" MaxLength="30" />
+    <Property Name="street" Type="nvarchar" MaxLength="50" />
+    <Property Name="streetno" Type="nvarchar" MaxLength="30" />
+    <Property Name="teamviewerid" Type="nvarchar" MaxLength="20" />
+    <Property Name="teamviewerpwd" Type="nvarchar" MaxLength="50" />
+    <Property Name="updatemanu" Type="bit" Nullable="false" />
+    <Property Name="updates" Type="bit" Nullable="false" />
+    <Property Name="updatessince" Type="datetime2" Precision="7" />
+    <Property Name="versionact" Type="nvarchar" MaxLength="20" />
+    <Property Name="versionlast" Type="nvarchar" MaxLength="20" />
+    <Property Name="versiontype" Type="tinyint" />
+    <Property Name="zip" Type="nvarchar" MaxLength="15" />
+    <Property Name="feedback" Type="bit" Nullable="false" />
+    <Property Name="feedbackname" Type="nvarchar" MaxLength="120" />
+  </EntityType>
+  <EntityContainer Name="hopeCRMModelStoreContainer">
+    <EntitySet Name="Customer" EntityType="Self.Customer" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>

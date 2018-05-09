@@ -19,8 +19,9 @@ namespace Pdf_project.Controllers
         {
             //Set Session isLoggedIn property to 0
             Session["isLoggedIn"] = 0;
+            Session["userZip"] = 0;
             return View();
-            
+
         }
 
         // Controller action that will receive data from login form, check in database if user with that password exists (zip as username and serial no as password) and
@@ -31,46 +32,59 @@ namespace Pdf_project.Controllers
             //Declaring variable Result that will hold true or false, depends on db search result
             String Result;
 
+
+
             //Declaring and instantiating hopeCRMEntities object (db instance)
-            hopeCRMEntities db = new hopeCRMEntities();
 
-            //Declaring List of customers that will contain certain customer or null
-            List<Customer> customer = db.Customers.Where(t => t.zip == model.username.ToString().Trim() && t.serialno == model.password.ToString().Trim()).ToList();
-
-            //Define empty User object 
-            User user = new User();
-
-            //Checking if customer exists or not and filling user object with corresponding value
-            if (customer.Count!=0)
+            using (hopeCRMEntitiesSecond db = new hopeCRMEntitiesSecond())
             {
-                Result = "True";
-                Session["isLoggedIn"] = 1;
-                user.Result = Result;
-                user.UserZip = customer[0].zip.ToString().Trim();
-                user.UserEmail = customer[0].email.ToString().Trim();
 
+                db.Database.Connection.Open();
+                //Declaring List of customers that will contain certain customer or null
+                List<Customer> customer = db.Customers.Where(t => t.zip == model.username.ToString().Trim() && t.serialno.Substring(15).Trim() == model.password.ToString().Trim()).ToList();
 
-                //Writting into log file (user zip, email, date and time)
-                using (StreamWriter writer = new StreamWriter(Server.MapPath("~/Log/log.txt"), true))
+                //Define empty User object 
+                User user = new User();
+
+                //Checking if customer exists or not and filling user object with corresponding value
+                if (customer.Count != 0)
                 {
-                    StringBuilder sb = new StringBuilder();
-                    sb.Append(user.UserZip + " " + user.UserEmail + " " + DateTime.Now.ToString("dd.MM.yyyy hh:mm tt",CultureInfo.InvariantCulture));
-                    writer.WriteLine(sb.ToString());
+                    Result = "True";
+                    Session["isLoggedIn"] = 1;
+                    Session["userZip"] = customer[0].zip.ToString().Trim();
+                    user.Result = Result;
+                    user.UserZip = customer[0].zip.ToString().Trim();
+                    user.UserEmail = customer[0].email.ToString().Trim();
+
+
+                    //Writting into log file (user zip, email, date and time)
+                    using (StreamWriter writer = new StreamWriter(Server.MapPath("~/Log/log.txt"), true))
+                    {
+                        //Declaring and instatiating object of String Builder class, that will append current row 
+                        StringBuilder sb = new StringBuilder();
+                        sb.Append(user.UserZip + " " + user.UserEmail + " " + DateTime.Now.ToString("dd.MM.yyyy hh:mm tt", CultureInfo.InvariantCulture));
+
+                        //Write row with login data into txt file
+                        writer.WriteLine(sb.ToString());
+                    }
+
+
+                }
+                else
+                {
+                    //If user is not found set false as result
+                    Result = "False";
+                    user.Result = Result;
                 }
 
 
-            }
-            else
-            {
-                Result = "False";
-                user.Result = Result;              
+                //Returning user as result in Json format
+                return Json(user);
+
             }
 
-
-            //Returning user as result in Json format
-            return Json(user);
         }
 
- 
+
     }
 }

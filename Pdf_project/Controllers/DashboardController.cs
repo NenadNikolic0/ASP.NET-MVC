@@ -12,7 +12,7 @@ namespace Pdf_project.Controllers
         public ActionResult Index()
         {
             //Check if user is logged, if is open dashboard
-            if (Convert.ToInt32(Session["isLoggedIn"]) == 1)
+            if (Convert.ToInt32(Session["isLoggedIn"]) == 1 && Session["userZip"].ToString().Trim() == Request["zip"].ToString().Trim())
             {
                 ViewBag.Zip = Request["zip"].ToString().Trim();
                 ViewBag.Email = Request["email"].ToString().Trim(); 

@@ -1,0 +1,91 @@
+﻿
+.login-dialog {
+    display: block;
+    width: 550px;
+    height: 430px;
+    background-color: #f7f7f7;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 40px;
+    border-radius: 5px;
+    box-shadow: 0px 15px 10px -15px #808080;
+}
+
+.login-main-body {
+    width: 400px;
+    height: 350px;
+    background-color: #fff;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 40px;
+}
+
+.login-title {
+    display: block;
+    width: 100%;
+    font-size: 28px;
+    text-align: center;
+    line-height: 60px
+}
+
+.input-fields-login {
+    width: 300px;
+    margin-left: 50px;
+    height: 45px;
+    margin-bottom: 20px;
+}
+
+.login-button-style {
+    width: 300px;
+    margin-left: 50px;
+    margin-top: 30px;
+}
+
+.error-template {
+    padding: 40px 15px;
+    text-align: center;
+    width: 550px;
+    height: 350px;
+    background-color: #f7f7f7;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 40px;
+    border-radius: 5px;
+    box-shadow: 0px 15px 10px -15px #808080;
+}
+}
+
+.error-actions {
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.error-actions .btn {
+        margin-right: 10px;
+}
+
+.error-template h1 {
+    font-size:40px;
+    margin-bottom:20px;
+}
+
+.error-template h2 {
+    font-size: 35px;
+    margin-bottom:10px;
+}
+
+.error-details {
+    font-size:18px;
+    margin-bottom:30px;
+}
+
+.error-message {
+    display: block;
+    width: 100%;
+    height: 35px;
+    margin-top: 10px;
+    text-align: center;
+    font-size: 14px;
+    color: #cc0000;
+    display:none;
+}
