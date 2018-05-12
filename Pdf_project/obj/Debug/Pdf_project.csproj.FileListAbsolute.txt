@@ -277,3 +277,5 @@ C:\Users\Nenad\Desktop\PDF\Pdf_project\obj\Debug\Pdf_project.csproj.CoreCompileI
 C:\Users\Nenad\Desktop\PDF\Pdf_project\obj\Debug\Pdf_project.csproj.CopyComplete
 C:\Users\Nenad\Desktop\PDF\Pdf_project\obj\Debug\Pdf_project.dll
 C:\Users\Nenad\Desktop\PDF\Pdf_project\obj\Debug\Pdf_project.pdb
+C:\Users\Nenad\Desktop\PDF\Pdf_project\bin\roslyn\System.Collections.Immutable.dll
+C:\Users\Nenad\Desktop\PDF\Pdf_project\obj\Debug\Pdf_project.csprojResolveAssemblyReference.cache
