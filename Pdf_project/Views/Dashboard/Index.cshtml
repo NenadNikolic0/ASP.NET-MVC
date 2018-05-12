@@ -40,21 +40,52 @@
                 </tr>
                 <tr>
                     <td width="50%">
-                        <p>
-                            <strong>##AGName1##</strong>
-                        </p>
-                        <p>
-                            <strong>##AGName2##</strong>
-                        </p>
-                        <p>
-                            <strong>##AGStreet##</strong>
-                        </p>
-                        <p>
-                            <strong>##AGZIP## ##AGCITY##</strong>
-                        </p>
-                        <p>
-                            <strong>##AGCountry##</strong>
-                        </p>
+                        @if (ViewBag.AgName1 != null)
+                        {
+                            <p>
+                                <strong>@ViewBag.AgName1</strong>
+                            </p>
+                        }
+
+                        @if (ViewBag.AgName2 != null)
+                        {
+                            <p>
+                                <strong>@ViewBag.AgName2</strong>
+                            </p>
+                        }
+
+                        @if (ViewBag.Street != null)
+                        {
+                            <p>
+                                <strong>@ViewBag.Street</strong>
+                            </p>
+                        }
+
+
+                        @if (ViewBag.Zip != null && ViewBag.City != null)
+                        {
+                            <p>
+                                <strong>@ViewBag.Zip &nbsp; @ViewBag.City</strong>
+                            </p>
+                        }
+
+                        @if (ViewBag.Country != null)
+                        {
+                            if (ViewBag.Country == "D")
+                            {
+                                <p>
+                                    <strong>@Html.Raw("Deutschland")</strong>
+                                </p>
+                            }
+                            else
+                            {
+                                <p>
+                                    <strong>@ViewBag.Country</strong>
+                                </p>
+                            }
+
+                        }
+
                     </td>
                 </tr>
                 <tr>
@@ -67,7 +98,7 @@
                 </tr>
                 <tr>
                     <td width="50%">
-                        <p>##AGCONTACT##</p>
+                        <p>@ViewBag.AgContact</p>
                     </td>
                 </tr>
                 <tr>
@@ -483,7 +514,7 @@
 
         <button class="btn btn-default agreement-button" id="agreementButton" disabled>Accept and sign</button>
     </div>
-    
+
 
 
 </div>
