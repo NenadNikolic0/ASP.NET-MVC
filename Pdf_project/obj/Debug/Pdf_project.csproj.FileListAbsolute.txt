@@ -279,3 +279,13 @@ C:\Users\Nenad\Desktop\PDF\Pdf_project\obj\Debug\Pdf_project.dll
 C:\Users\Nenad\Desktop\PDF\Pdf_project\obj\Debug\Pdf_project.pdb
 C:\Users\Nenad\Desktop\PDF\Pdf_project\bin\roslyn\System.Collections.Immutable.dll
 C:\Users\Nenad\Desktop\PDF\Pdf_project\obj\Debug\Pdf_project.csprojResolveAssemblyReference.cache
+C:\Users\IC\Web projects\pdf_project\Pdf_project\obj\Debug\Interop.Microsoft.Office.Core.dll
+C:\Users\IC\Web projects\pdf_project\Pdf_project\obj\Debug\Interop.Microsoft.Office.Interop.Word.dll
+C:\Users\IC\Web projects\pdf_project\Pdf_project\obj\Debug\Interop.VBIDE.dll
+C:\Users\IC\Web projects\pdf_project\Pdf_project\obj\Debug\Pdf_project.csproj.ResolveComReference.cache
+C:\Users\IC\Web projects\pdf_project\Pdf_project\bin\Spire.Doc.dll
+C:\Users\IC\Web projects\pdf_project\Pdf_project\bin\Spire.License.dll
+C:\Users\IC\Web projects\pdf_project\Pdf_project\bin\Spire.Pdf.dll
+C:\Users\IC\Web projects\pdf_project\Pdf_project\bin\Microsoft.mshtml.dll
+C:\Users\IC\Web projects\pdf_project\Pdf_project\bin\Spire.Doc.xml
+C:\Users\IC\Web projects\pdf_project\Pdf_project\bin\Spire.License.xml

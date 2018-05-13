@@ -5,6 +5,8 @@ using System.Web;
 using System.Web.Mvc;
 using System.Data.Entity;
 using Pdf_project.Database;
+using Microsoft.Office.Interop.Word;
+
 
 namespace Pdf_project.Controllers
 {
@@ -73,5 +75,46 @@ namespace Pdf_project.Controllers
             }
             
         }
+
+
+        //Post request to fill word template 
+        public ActionResult fillWord()
+        {
+            //Code for making connection with existing word template 
+            Microsoft.Office.Interop.Word._Application wApp = new Microsoft.Office.Interop.Word.Application();
+            Microsoft.Office.Interop.Word.Documents wDocs = wApp.Documents;
+            Microsoft.Office.Interop.Word._Document wDoc = wDocs.Open(Server.MapPath("~/Template/template.docx").ToString(), ReadOnly: false);
+            wDoc.Activate();
+
+            //Filling bookmarks in word template 
+            Microsoft.Office.Interop.Word.Bookmarks wBookmarks = wDoc.Bookmarks;
+            Microsoft.Office.Interop.Word.Bookmark wBookmark = wBookmarks["AGName1"];
+            Microsoft.Office.Interop.Word.Range wRange = wBookmark.Range;
+            wRange.Text = "proba";
+
+            object filename = @Server.MapPath("~/Word/").ToString() + "proba.docx";
+
+            wDoc.SaveAs(filename);
+
+            string pdfName = @Server.MapPath("~/Pdf/").ToString() + "proba.pdf";
+
+            wDoc.ExportAsFixedFormat(OutputFileName: pdfName, ExportFormat: WdExportFormat.wdExportFormatPDF, OpenAfterExport: true, UseISO19005_1: true);
+
+            
+
+            wDoc.Close();
+
+         
+
+
+
+
+            return RedirectToAction("index", "dashboard");
+
+        }
+
+
+
+
     }
 }
