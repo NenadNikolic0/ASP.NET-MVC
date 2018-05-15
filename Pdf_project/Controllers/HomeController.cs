@@ -41,10 +41,10 @@ namespace Pdf_project.Controllers
 
                 db.Database.Connection.Open();
                 //Declaring List of customers that will contain certain customer or null
-                List<Customer> customer = db.Customers.Where(t => t.zip == model.username.ToString().Trim() && t.serialno.Substring(15).Trim() == model.password.ToString().Trim()).ToList();
+                List<Customer> customer = db.Customers.Where(t => t.zip == model.password.ToString().Trim() && t.serialno.Substring(15).Trim() == model.username.ToString().Trim()).ToList();
 
                 //Define empty User object 
-                User user = new User();
+                UserInfo user = new UserInfo();
 
                 //Checking if customer exists or not and filling user object with corresponding value
                 if (customer.Count != 0)
@@ -55,7 +55,7 @@ namespace Pdf_project.Controllers
                     user.Result = Result;
                     user.UserZip = customer[0].zip.ToString().Trim();
                     user.UserEmail = customer[0].email.ToString().Trim();
-
+                    user.UserSerialNo = customer[0].serialno.Substring(15).Trim();
 
                     //Writting into log file (user zip, email, date and time)
                     using (StreamWriter writer = new StreamWriter(Server.MapPath("~/Log/log.txt"), true))

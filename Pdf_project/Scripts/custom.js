@@ -21,16 +21,20 @@ jQuery(document).ready(function () {
                     //Set error message to invisible              
                     jQuery('.error-message').css('display', 'none');
 
+                    //Set localstorage for current user
+                    localStorage["zip"] = data.UserZip;
+                    localStorage["serialno"] = data.UserSerialNo;
+
                     //Redirect to dashboard
-                    window.location.href = '/dashboard?zip=' + data.UserZip + '&email=' + data.UserEmail;
+                    window.location.href = '/dashboard?zip=' + data.UserZip + '&email=' + data.UserEmail + '&serialno=' + data.UserSerialNo;
                 }
                 else {
                     //Set error message visible
                     jQuery('.error-message').css('display', 'block');
                 }
 
-            
-                
+
+
 
             });
     });
@@ -49,7 +53,7 @@ jQuery(document).ready(function () {
 
         //If checkbox is checked remove default btn class and add btn-primaru class, enable button
         if (jQuery(this).is(":checked")) {
-            
+
             if (agreementButton.hasClass('btn-default')) {
 
                 //Remove disabled attribute 
@@ -75,6 +79,39 @@ jQuery(document).ready(function () {
         }
     });
 
+    //Function that will trigger on agreementButton click
+    jQuery(document).on('click', '#agreementButton', function () {
+
+        //Post data to controller action to create word and pdf
+        jQuery.post("/dashboard/createdocumentsfromtemplate",
+            //Passing parametres
+            {
+                Zip: localStorage["zip"],
+                SerialNo: localStorage["serialno"]               
+            },
+            //Returned result from controller
+            function (data) {
+                console.log('Data:', data);
+
+                if (data.Result == "true") {
+
+                    //Show download-preview section 
+                    jQuery('.contract-section').css("display", "none");
+                    jQuery('.download-preview-contract').css("display", "block");
+
+                    //Set href values for download and preview 
+                    jQuery('.download-pdf').attr("href", "/Dashboard/DownloadPdf?name=" + data.Name);
+                    jQuery('.preview-pdf').attr("href", "Pdf/" + data.Name + ".pdf");
+                    
+
+                    window.open("Pdf/" + data.Name + ".pdf", "_blank");
+                }
+                
+                
+
+            });
+
+    });
 
 
 });

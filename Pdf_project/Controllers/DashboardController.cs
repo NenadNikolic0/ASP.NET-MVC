@@ -5,8 +5,10 @@ using System.Web;
 using System.Web.Mvc;
 using System.Data.Entity;
 using Pdf_project.Database;
+using Pdf_project.Models;
 using Microsoft.Office.Interop.Word;
-
+using Spire;
+using System.IO;
 
 namespace Pdf_project.Controllers
 {
@@ -27,7 +29,7 @@ namespace Pdf_project.Controllers
 
                 Customer CurrentUser = db.Customers.Where(t => t.zip.Trim() == zip).First();
 
-              
+            
                 //Adding user data to viewbag
                 if (CurrentUser.name1!=null)
                 {
@@ -64,6 +66,24 @@ namespace Pdf_project.Controllers
                     ViewBag.AgContact = CurrentUser.email.ToString().Trim();
                 }
 
+                //Generating strong name as word and pdf name
+                string HashName = UserInfo.CalculateMD5Hash(Request["serialno"].ToString().Trim() + "-" + Request["zip"].ToString().Trim());
+
+                string pdfFile = Server.MapPath("~/Pdf/").ToString() + HashName + ".pdf";
+
+                if (System.IO.File.Exists(pdfFile))
+                {
+                    ViewBag.ExistingPdf = true;
+                    ViewBag.PdfName = HashName;
+                }
+
+                else
+                {
+                    ViewBag.PdfName = "#";
+                    ViewBag.ExistingPdf = false;
+                }
+
+
 
                 return View();
             }
@@ -76,44 +96,113 @@ namespace Pdf_project.Controllers
             
         }
 
-
-        //Post request to fill word template 
-        public ActionResult fillWord()
+        public ActionResult CreateDocumentsFromTemplate(ContractDetails details)
         {
-            //Code for making connection with existing word template 
-            Microsoft.Office.Interop.Word._Application wApp = new Microsoft.Office.Interop.Word.Application();
-            Microsoft.Office.Interop.Word.Documents wDocs = wApp.Documents;
-            Microsoft.Office.Interop.Word._Document wDoc = wDocs.Open(Server.MapPath("~/Template/template.docx").ToString(), ReadOnly: false);
-            wDoc.Activate();
 
-            //Filling bookmarks in word template 
-            Microsoft.Office.Interop.Word.Bookmarks wBookmarks = wDoc.Bookmarks;
-            Microsoft.Office.Interop.Word.Bookmark wBookmark = wBookmarks["AGName1"];
-            Microsoft.Office.Interop.Word.Range wRange = wBookmark.Range;
-            wRange.Text = "proba";
+            //Get data from db for current user 
+            hopeCRMEntitiesSecond db = new hopeCRMEntitiesSecond();
+            
 
-            object filename = @Server.MapPath("~/Word/").ToString() + "proba.docx";
+            Customer CurrentUser = db.Customers.Where( t => t.zip == details.Zip.ToString().Trim() && t.serialno.Substring(15).Trim() == details.SerialNo.ToString().Trim()).First();
 
-            wDoc.SaveAs(filename);
 
-            string pdfName = @Server.MapPath("~/Pdf/").ToString() + "proba.pdf";
+            //Adding user data to viewbag
+            if (CurrentUser.name1 != null)
+            {
+                details.Name1 = CurrentUser.name1.ToString().Trim();
+            }
 
-            wDoc.ExportAsFixedFormat(OutputFileName: pdfName, ExportFormat: WdExportFormat.wdExportFormatPDF, OpenAfterExport: true, UseISO19005_1: true);
+            if (CurrentUser.name2 != null)
+            {
+                details.Name2 = CurrentUser.name2.ToString().Trim();
+            }
+
+            if (CurrentUser.street != null)
+            {
+                details.Street= CurrentUser.street.ToString().Trim() + " " + CurrentUser.streetno.ToString().Trim();
+            }
 
             
 
-            wDoc.Close();
+            if (CurrentUser.city != null)
+            {
+                details.City= CurrentUser.city.ToString().Trim();
+            }
 
-         
+            if (CurrentUser.countryid != null)
+            {
+                details.Country = CurrentUser.countryid.ToString().Trim();
+            }
+
+            if (CurrentUser.email != null)
+            {
+                details.Contact = CurrentUser.email.ToString().Trim();
+            }
 
 
+            string Result, Name;
+
+            //Generating strong name as word and pdf name
+            string HashName = UserInfo.CalculateMD5Hash(details.SerialNo + "-" + details.Zip);
 
 
-            return RedirectToAction("index", "dashboard");
+            try
+            {
+                Spire.Doc.Document document = new Spire.Doc.Document();
+                
+                document.LoadFromFile(Server.MapPath("~/Template/template.docx").ToString());
+
+               
+
+                document.Replace("##AGName1##", details.Name1, false, true);
+                document.Replace("##AGName2##", details.Name2, false, true);
+                document.Replace("##AGStreet##", details.Street, false, true);
+                document.Replace("##AGZIP##", details.Zip, false, true);
+                document.Replace("##AGCITY##", details.City, false, true);
+                document.Replace("##AGCountry##", details.Country, false, true);
+                document.Replace("##AGCONTACT##", details.Contact, false, true);
+                document.Replace("##DayDate##", DateTime.Now.ToString("dd.MM.yyyy"), false, true);
+
+                document.SaveToFile(Server.MapPath("~/Word/").ToString() + HashName + ".docx", Spire.Doc.FileFormat.Docx);
+
+
+                //Code for making connection with existing word template 
+                Microsoft.Office.Interop.Word._Application wApp = new Microsoft.Office.Interop.Word.Application();
+                Microsoft.Office.Interop.Word.Documents wDocs = wApp.Documents;
+                Microsoft.Office.Interop.Word._Document wDoc = wDocs.Open(Server.MapPath("~/Word/").ToString() + HashName + ".docx", ReadOnly: false, Visible:false);
+                wDoc.Activate();
+
+                string pdfName = @Server.MapPath("~/Pdf/").ToString() + HashName + ".pdf";
+
+                wDoc.ExportAsFixedFormat(OutputFileName: pdfName, ExportFormat: WdExportFormat.wdExportFormatPDF, UseISO19005_1: true);
+
+                wDoc.Close();
+
+                return Json( new { Result = "true", Name = HashName });
+
+
+            }
+
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error occured:", ex.ToString());
+                return Json(Result = ex.ToString());
+            }
+
+            finally
+            {
+                Dispose();
+            }
 
         }
 
-
+        public FileResult DownloadPdf()
+        {
+            string Name = Request["name"];
+            byte[] fileBytes = System.IO.File.ReadAllBytes(Server.MapPath("~/Pdf/").ToString() + Name + ".pdf");
+            string fileName = Name +".pdf";
+            return File(fileBytes, System.Net.Mime.MediaTypeNames.Application.Octet, fileName);
+        }
 
 
     }

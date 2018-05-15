@@ -116,3 +116,60 @@ body {
     padding-left: 11px;
     color: #7e7e7;
 }
+
+.contract-header {
+    text-align:center;
+}
+
+.contract-body {
+    padding-left: 40px;
+    padding-right: 40px;
+    text-align: justify;
+}
+
+.contract-footer {
+    margin-top: 50px;
+    width: 100%;
+    height: 300px;
+    padding-left: 40px;
+    padding-right: 40px;
+}
+
+.download-preview-contract {
+    width:100%;
+    height:200px;
+    display:none;
+    padding-top:50px;
+}
+
+.download-preview-contract-section {
+    width: 100%;
+    height: 200px;
+    padding-top: 50px;
+}
+
+.agreement-button {
+    margin-top: 30px;
+}
+
+.download-pdf, .preview-pdf {
+    font-size:17px;
+    cursor:pointer;
+}
+
+.contract-section {
+    padding-top:50px;
+}
+
+a {
+    color:#000;
+
+}
+
+a:hover {
+    color:#000;
+}
+
+
+
+
