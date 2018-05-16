@@ -49,21 +49,21 @@
                                 @if (ViewBag.AgName1 != null)
                                 {
                                     <p>
-                                        <strong>@ViewBag.AgName1</strong>
+                                        <strong><input type="text" value="@ViewBag.AgName1"/></strong>
                                     </p>
                                 }
 
                                 @if (ViewBag.AgName2 != null)
                                 {
                                     <p>
-                                        <strong>@ViewBag.AgName2</strong>
+                                        <strong><input type="text" value="@ViewBag.AgName2" /></strong>
                                     </p>
                                 }
 
                                 @if (ViewBag.Street != null)
                                 {
                                     <p>
-                                        <strong>@ViewBag.Street</strong>
+                                        <strong><input type="text" value="@ViewBag.Street" /></strong>
                                     </p>
                                 }
 
@@ -71,24 +71,17 @@
                                 @if (ViewBag.Zip != null && ViewBag.City != null)
                                 {
                                     <p>
-                                        <strong>@ViewBag.Zip &nbsp; @ViewBag.City</strong>
+                                        <strong><input type="text" value="@ViewBag.Zip"/> &nbsp;<input type="text" value="@ViewBag.City" /></strong>
                                     </p>
                                 }
 
                                 @if (ViewBag.Country != null)
                                 {
-                                    if (ViewBag.Country == "D")
-                                    {
+                                  
                                         <p>
-                                            <strong>@Html.Raw("Deutschland")</strong>
+                                            <strong><input type="text" value="@ViewBag.Country" /></strong>
                                         </p>
-                                    }
-                                    else
-                                    {
-                                        <p>
-                                            <strong>@ViewBag.Country</strong>
-                                        </p>
-                                    }
+                                   
 
                                 }
 
@@ -104,7 +97,7 @@
                         </tr>
                         <tr>
                             <td width="50%">
-                                <p>@ViewBag.AgContact</p>
+                                <p><input type="text" value="@ViewBag.AgContact" /></p>
                             </td>
                         </tr>
                         <tr>

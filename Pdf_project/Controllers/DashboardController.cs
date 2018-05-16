@@ -153,14 +153,81 @@ namespace Pdf_project.Controllers
                 document.LoadFromFile(Server.MapPath("~/Template/template.docx").ToString());
 
                
+                if(details.Name1!=null && details.Name1.ToString().Trim() != "")
+                {
+                    document.Replace("##AGName1##", details.Name1, false, true);
+                }
 
-                document.Replace("##AGName1##", details.Name1, false, true);
-                document.Replace("##AGName2##", details.Name2, false, true);
-                document.Replace("##AGStreet##", details.Street, false, true);
-                document.Replace("##AGZIP##", details.Zip, false, true);
-                document.Replace("##AGCITY##", details.City, false, true);
-                document.Replace("##AGCountry##", details.Country, false, true);
-                document.Replace("##AGCONTACT##", details.Contact, false, true);
+                else
+                {
+                    document.Replace("##AGName1##", "", false, true);
+                }
+
+                if (details.Name2 != null && details.Name2.ToString().Trim() != "")
+                {
+                    document.Replace("##AGName2##", details.Name2, false, true);
+                }
+
+                else
+                {
+                    document.Replace("##AGName2##", "", false, true);
+                }
+
+                if (details.Street != null && details.Street.ToString().Trim() != "")
+                {
+                    document.Replace("##AGStreet##", details.Street, false, true);
+                }
+
+                else
+                {
+                    document.Replace("##AGStreet##", "", false, true);
+                }
+
+
+                if (details.Zip != null && details.Zip.ToString().Trim() != "")
+                {
+                    document.Replace("##AGZIP##", details.Zip, false, true);
+                }
+
+                else
+                {
+                    document.Replace("##AGZIP##", "", false, true);
+                }
+
+
+                if (details.City != null && details.City.ToString().Trim() != "")
+                {
+                    document.Replace("##AGCITY##", details.City, false, true);
+                    document.Replace("##City##", details.City, false, true);
+                }
+
+                else
+                {
+                    document.Replace("##AGCITY##", "", false, true);
+                    document.Replace("##City##", "", false, true);
+                }
+
+                if (details.Country != null && details.Country.ToString().Trim() != "")
+                {
+                    document.Replace("##AGCountry##", details.Country, false, true);
+                }
+
+                else
+                {
+                    document.Replace("##AGCountry##", "", false, true);
+                }
+
+                if (details.Contact != null && details.Contact.ToString().Trim() != "")
+                {
+                    document.Replace("##AGCONTACT##", details.Contact, false, true);
+                }
+
+                else
+                {
+                    document.Replace("##AGCONTACT##", "", false, true);
+                }
+
+
                 document.Replace("##DayDate##", DateTime.Now.ToString("dd.MM.yyyy"), false, true);
 
                 document.SaveToFile(Server.MapPath("~/Word/").ToString() + HashName + ".docx", Spire.Doc.FileFormat.Docx);

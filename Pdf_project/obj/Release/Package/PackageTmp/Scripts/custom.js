@@ -82,6 +82,9 @@ jQuery(document).ready(function () {
     //Function that will trigger on agreementButton click
     jQuery(document).on('click', '#agreementButton', function () {
 
+        //Set loading screen 
+        jQuery(".loader-over-page").css("display", "block");
+
         //Post data to controller action to create word and pdf
         jQuery.post("/dashboard/createdocumentsfromtemplate",
             //Passing parametres
@@ -93,6 +96,9 @@ jQuery(document).ready(function () {
             function (data) {
                 console.log('Data:', data);
 
+                //Remove loading screen 
+                jQuery(".loader-over-page").css("display", "none");
+
                 if (data.Result == "true") {
 
                     //Show download-preview section 
@@ -102,12 +108,14 @@ jQuery(document).ready(function () {
                     //Set href values for download and preview 
                     jQuery('.download-pdf').attr("href", "/Dashboard/DownloadPdf?name=" + data.Name);
                     jQuery('.preview-pdf').attr("href", "Pdf/" + data.Name + ".pdf");
-                    
+
+                    //Scroll to top
+                    jQuery("html, body").animate({ scrollTop: 0 }, 0);
+
 
                     window.open("Pdf/" + data.Name + ".pdf", "_blank");
                 }
-                
-                
+
 
             });
 
