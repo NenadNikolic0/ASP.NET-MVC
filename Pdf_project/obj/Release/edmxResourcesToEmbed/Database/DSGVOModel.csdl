@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DSGVOModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="kunden">
+    <Key>
+      <PropertyRef Name="shareware" />
+      <PropertyRef Name="lizend" />
+      <PropertyRef Name="hopeweb" />
+      <PropertyRef Name="feedback" />
+      <PropertyRef Name="CM" />
+    </Key>
+    <Property Name="kunr" Type="Double" />
+    <Property Name="name1" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="name2" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="strasse" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="land" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="plz" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="ort" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="kaufdat" Type="DateTime" Precision="3" />
+    <Property Name="seriennr" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="agentur" Type="Double" />
+    <Property Name="version" Type="Double" />
+    <Property Name="shareware" Type="Boolean" Nullable="false" />
+    <Property Name="maxzimm" Type="Double" />
+    <Property Name="verstand" Type="Double" />
+    <Property Name="verdatum" Type="DateTime" Precision="3" />
+    <Property Name="lizend" Type="Boolean" Nullable="false" />
+    <Property Name="lizenddat" Type="DateTime" Precision="3" />
+    <Property Name="email" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="hopeweb" Type="Boolean" Nullable="false" />
+    <Property Name="hopewebid" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="feedback" Type="Boolean" Nullable="false" />
+    <Property Name="aktversion" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="lastcheck" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="CM" Type="Boolean" Nullable="false" />
+  </EntityType>
+  <EntityContainer Name="DSGVOEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="kundens" EntityType="Self.kunden" />
+  </EntityContainer>
+</Schema>

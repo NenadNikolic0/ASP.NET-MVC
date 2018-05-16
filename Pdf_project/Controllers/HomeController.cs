@@ -36,12 +36,12 @@ namespace Pdf_project.Controllers
 
             //Declaring and instantiating hopeCRMEntities object (db instance)
 
-            using (hopeCRMEntitiesSecond db = new hopeCRMEntitiesSecond())
+            using (DSGVOEntities db = new DSGVOEntities())
             {
 
                 db.Database.Connection.Open();
                 //Declaring List of customers that will contain certain customer or null
-                List<Customer> customer = db.Customers.Where(t => t.zip == model.password.ToString().Trim() && t.serialno.Substring(15).Trim() == model.username.ToString().Trim()).ToList();
+                List<kunden> customer = db.kundens.Where(t => t.plz == model.password.ToString().Trim() && t.seriennr.Substring(15).Trim() == model.username.ToString().Trim()).ToList();
 
                 //Define empty User object 
                 UserInfo user = new UserInfo();
@@ -51,11 +51,11 @@ namespace Pdf_project.Controllers
                 {
                     Result = "True";
                     Session["isLoggedIn"] = 1;
-                    Session["userZip"] = customer[0].zip.ToString().Trim();
+                    Session["userZip"] = customer[0].plz.ToString().Trim();
                     user.Result = Result;
-                    user.UserZip = customer[0].zip.ToString().Trim();
+                    user.UserZip = customer[0].plz.ToString().Trim();
                     user.UserEmail = customer[0].email.ToString().Trim();
-                    user.UserSerialNo = customer[0].serialno.Substring(15).Trim();
+                    user.UserSerialNo = customer[0].seriennr.Substring(15).Trim();
 
                     //Writting into log file (user zip, email, date and time)
                     using (StreamWriter writer = new StreamWriter(Server.MapPath("~/Log/log.txt"), true))

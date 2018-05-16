@@ -49,21 +49,42 @@
                                 @if (ViewBag.AgName1 != null)
                                 {
                                     <p>
-                                        <strong><input type="text" value="@ViewBag.AgName1"/></strong>
+                                        <input class="form-field-long" type="text" value="@ViewBag.AgName1" />
+                                    </p>
+                                }
+
+                                else
+                                {
+                                    <p>
+                                        <input class="form-field-long" type="text" />
                                     </p>
                                 }
 
                                 @if (ViewBag.AgName2 != null)
                                 {
                                     <p>
-                                        <strong><input type="text" value="@ViewBag.AgName2" /></strong>
+                                        <input class="form-field-long" type="text" value="@ViewBag.AgName2" />
+                                    </p>
+                                }
+
+                                else
+                                {
+                                    <p>
+                                        <input class="form-field-long" type="text" />
                                     </p>
                                 }
 
                                 @if (ViewBag.Street != null)
                                 {
                                     <p>
-                                        <strong><input type="text" value="@ViewBag.Street" /></strong>
+                                        <input class="form-field-long" type="text" value="@ViewBag.Street" />
+                                    </p>
+                                }
+
+                                else
+                                {
+                                    <p>
+                                        <input class="form-field-long" type="text" />
                                     </p>
                                 }
 
@@ -71,18 +92,31 @@
                                 @if (ViewBag.Zip != null && ViewBag.City != null)
                                 {
                                     <p>
-                                        <strong><input type="text" value="@ViewBag.Zip"/> &nbsp;<input type="text" value="@ViewBag.City" /></strong>
+                                        <input class="form-field-short" type="text" value="@ViewBag.Zip" /> &nbsp;<input class="form-field-medium" type="text" value="@ViewBag.City" />
+                                    </p>
+                                }
+
+                                else
+                                {
+                                    <p>
+                                        <input class="form-field-short" type="text" /> &nbsp;<input class="form-field-medium" type="text" />
                                     </p>
                                 }
 
                                 @if (ViewBag.Country != null)
                                 {
-                                  
-                                        <p>
-                                            <strong><input type="text" value="@ViewBag.Country" /></strong>
-                                        </p>
-                                   
 
+                                    <p>
+                                        <input class="form-field-long" type="text" value="@ViewBag.Country" />
+                                    </p>
+
+                                }
+
+                                else
+                                {
+                                    <p>
+                                        <input class="form-field-long" type="text" />
+                                    </p>
                                 }
 
                             </td>
@@ -97,7 +131,15 @@
                         </tr>
                         <tr>
                             <td width="50%">
-                                <p><input type="text" value="@ViewBag.AgContact" /></p>
+                                @if (ViewBag.AgContact != null)
+                                {
+                                    <p><input class="form-field-long" type="text" value="@ViewBag.AgContact" /></p>
+                                }
+                                else
+                                {
+                                    <p><input class="form-field-long" type="text"  /></p>
+                                }
+
                             </td>
                         </tr>
                         <tr>
@@ -508,10 +550,12 @@
             <div class="contract-footer">
                 <!--Agreement checkbox-->
                 <div class="agreement-checkbox">
-                    <label class="checkbox-inline"><input type="checkbox" id="agreementCheckbox">I will accept the contract</label>
+                    <label class="checkbox-inline"><input type="checkbox" id="agreementCheckbox">Ich habe diesen Vertrag gelesen und akzeptiere diesen mit Klicken auf den Button <br/>
+                    "Akzeptieren und elektronisch unterschreiben"
+                    </label>
                 </div>
 
-                <button class="btn btn-default agreement-button" id="agreementButton" disabled>Accept and sign</button>
+                <button class="btn btn-default agreement-button" id="agreementButton" disabled>Akzeptieren und elektronisch unterschreiben</button>
             </div>
 
         </div>

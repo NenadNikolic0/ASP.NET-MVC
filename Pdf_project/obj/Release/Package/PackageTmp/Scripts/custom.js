@@ -54,14 +54,13 @@ jQuery(document).ready(function () {
         //If checkbox is checked remove default btn class and add btn-primaru class, enable button
         if (jQuery(this).is(":checked")) {
 
-            if (agreementButton.hasClass('btn-default')) {
+            
 
                 //Remove disabled attribute 
                 $('#agreementButton').prop("disabled", false);
 
-                agreementButton.removeClass('btn-default');
-                agreementButton.addClass('btn-primary');
-            }
+               
+            
 
         }
 
@@ -70,11 +69,6 @@ jQuery(document).ready(function () {
 
             //Add disabled attribute 
             $('#agreementButton').prop("disabled", true);
-
-            if (agreementButton.hasClass('btn-primary')) {
-                agreementButton.removeClass('btn-primary');
-                agreementButton.addClass('btn-default');
-            }
 
         }
     });

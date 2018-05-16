@@ -1,0 +1,173 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="DSGVOModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'DSGVO.dbo.kunden' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="kunden">
+          <Key>
+            <PropertyRef Name="shareware" />
+            <PropertyRef Name="lizend" />
+            <PropertyRef Name="hopeweb" />
+            <PropertyRef Name="feedback" />
+            <PropertyRef Name="CM" />
+          </Key>
+          <Property Name="kunr" Type="float" />
+          <Property Name="name1" Type="nvarchar" MaxLength="255" />
+          <Property Name="name2" Type="nvarchar" MaxLength="255" />
+          <Property Name="strasse" Type="nvarchar" MaxLength="255" />
+          <Property Name="land" Type="nvarchar" MaxLength="255" />
+          <Property Name="plz" Type="nvarchar" MaxLength="255" />
+          <Property Name="ort" Type="nvarchar" MaxLength="255" />
+          <Property Name="kaufdat" Type="datetime" />
+          <Property Name="seriennr" Type="nvarchar" MaxLength="255" />
+          <Property Name="agentur" Type="float" />
+          <Property Name="version" Type="float" />
+          <Property Name="shareware" Type="bit" Nullable="false" />
+          <Property Name="maxzimm" Type="float" />
+          <Property Name="verstand" Type="float" />
+          <Property Name="verdatum" Type="datetime" />
+          <Property Name="lizend" Type="bit" Nullable="false" />
+          <Property Name="lizenddat" Type="datetime" />
+          <Property Name="email" Type="nvarchar" MaxLength="255" />
+          <Property Name="hopeweb" Type="bit" Nullable="false" />
+          <Property Name="hopewebid" Type="nvarchar" MaxLength="255" />
+          <Property Name="feedback" Type="bit" Nullable="false" />
+          <Property Name="aktversion" Type="nvarchar" MaxLength="255" />
+          <Property Name="lastcheck" Type="nvarchar" MaxLength="255" />
+          <Property Name="CM" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="DSGVOModelStoreContainer">
+          <EntitySet Name="kunden" EntityType="Self.kunden" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [kunden].[kunr] AS [kunr], 
+    [kunden].[name1] AS [name1], 
+    [kunden].[name2] AS [name2], 
+    [kunden].[strasse] AS [strasse], 
+    [kunden].[land] AS [land], 
+    [kunden].[plz] AS [plz], 
+    [kunden].[ort] AS [ort], 
+    [kunden].[kaufdat] AS [kaufdat], 
+    [kunden].[seriennr] AS [seriennr], 
+    [kunden].[agentur] AS [agentur], 
+    [kunden].[version] AS [version], 
+    [kunden].[shareware] AS [shareware], 
+    [kunden].[maxzimm] AS [maxzimm], 
+    [kunden].[verstand] AS [verstand], 
+    [kunden].[verdatum] AS [verdatum], 
+    [kunden].[lizend] AS [lizend], 
+    [kunden].[lizenddat] AS [lizenddat], 
+    [kunden].[email] AS [email], 
+    [kunden].[hopeweb] AS [hopeweb], 
+    [kunden].[hopewebid] AS [hopewebid], 
+    [kunden].[feedback] AS [feedback], 
+    [kunden].[aktversion] AS [aktversion], 
+    [kunden].[lastcheck] AS [lastcheck], 
+    [kunden].[CM] AS [CM]
+    FROM [dbo].[kunden] AS [kunden]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DSGVOModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="kunden">
+          <Key>
+            <PropertyRef Name="shareware" />
+            <PropertyRef Name="lizend" />
+            <PropertyRef Name="hopeweb" />
+            <PropertyRef Name="feedback" />
+            <PropertyRef Name="CM" />
+          </Key>
+          <Property Name="kunr" Type="Double" />
+          <Property Name="name1" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="name2" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="strasse" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="land" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="plz" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="ort" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="kaufdat" Type="DateTime" Precision="3" />
+          <Property Name="seriennr" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="agentur" Type="Double" />
+          <Property Name="version" Type="Double" />
+          <Property Name="shareware" Type="Boolean" Nullable="false" />
+          <Property Name="maxzimm" Type="Double" />
+          <Property Name="verstand" Type="Double" />
+          <Property Name="verdatum" Type="DateTime" Precision="3" />
+          <Property Name="lizend" Type="Boolean" Nullable="false" />
+          <Property Name="lizenddat" Type="DateTime" Precision="3" />
+          <Property Name="email" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="hopeweb" Type="Boolean" Nullable="false" />
+          <Property Name="hopewebid" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="feedback" Type="Boolean" Nullable="false" />
+          <Property Name="aktversion" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="lastcheck" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="CM" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="DSGVOEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="kundens" EntityType="Self.kunden" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="DSGVOModelStoreContainer" CdmEntityContainer="DSGVOEntities">
+          <EntitySetMapping Name="kundens">
+            <EntityTypeMapping TypeName="DSGVOModel.kunden">
+              <MappingFragment StoreEntitySet="kunden">
+                <ScalarProperty Name="kunr" ColumnName="kunr" />
+                <ScalarProperty Name="name1" ColumnName="name1" />
+                <ScalarProperty Name="name2" ColumnName="name2" />
+                <ScalarProperty Name="strasse" ColumnName="strasse" />
+                <ScalarProperty Name="land" ColumnName="land" />
+                <ScalarProperty Name="plz" ColumnName="plz" />
+                <ScalarProperty Name="ort" ColumnName="ort" />
+                <ScalarProperty Name="kaufdat" ColumnName="kaufdat" />
+                <ScalarProperty Name="seriennr" ColumnName="seriennr" />
+                <ScalarProperty Name="agentur" ColumnName="agentur" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="shareware" ColumnName="shareware" />
+                <ScalarProperty Name="maxzimm" ColumnName="maxzimm" />
+                <ScalarProperty Name="verstand" ColumnName="verstand" />
+                <ScalarProperty Name="verdatum" ColumnName="verdatum" />
+                <ScalarProperty Name="lizend" ColumnName="lizend" />
+                <ScalarProperty Name="lizenddat" ColumnName="lizenddat" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="hopeweb" ColumnName="hopeweb" />
+                <ScalarProperty Name="hopewebid" ColumnName="hopewebid" />
+                <ScalarProperty Name="feedback" ColumnName="feedback" />
+                <ScalarProperty Name="aktversion" ColumnName="aktversion" />
+                <ScalarProperty Name="lastcheck" ColumnName="lastcheck" />
+                <ScalarProperty Name="CM" ColumnName="CM" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

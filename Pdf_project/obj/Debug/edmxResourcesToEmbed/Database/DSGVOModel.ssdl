@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DSGVOModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'DSGVO.dbo.kunden' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="kunden">
+    <Key>
+      <PropertyRef Name="shareware" />
+      <PropertyRef Name="lizend" />
+      <PropertyRef Name="hopeweb" />
+      <PropertyRef Name="feedback" />
+      <PropertyRef Name="CM" />
+    </Key>
+    <Property Name="kunr" Type="float" />
+    <Property Name="name1" Type="nvarchar" MaxLength="255" />
+    <Property Name="name2" Type="nvarchar" MaxLength="255" />
+    <Property Name="strasse" Type="nvarchar" MaxLength="255" />
+    <Property Name="land" Type="nvarchar" MaxLength="255" />
+    <Property Name="plz" Type="nvarchar" MaxLength="255" />
+    <Property Name="ort" Type="nvarchar" MaxLength="255" />
+    <Property Name="kaufdat" Type="datetime" />
+    <Property Name="seriennr" Type="nvarchar" MaxLength="255" />
+    <Property Name="agentur" Type="float" />
+    <Property Name="version" Type="float" />
+    <Property Name="shareware" Type="bit" Nullable="false" />
+    <Property Name="maxzimm" Type="float" />
+    <Property Name="verstand" Type="float" />
+    <Property Name="verdatum" Type="datetime" />
+    <Property Name="lizend" Type="bit" Nullable="false" />
+    <Property Name="lizenddat" Type="datetime" />
+    <Property Name="email" Type="nvarchar" MaxLength="255" />
+    <Property Name="hopeweb" Type="bit" Nullable="false" />
+    <Property Name="hopewebid" Type="nvarchar" MaxLength="255" />
+    <Property Name="feedback" Type="bit" Nullable="false" />
+    <Property Name="aktversion" Type="nvarchar" MaxLength="255" />
+    <Property Name="lastcheck" Type="nvarchar" MaxLength="255" />
+    <Property Name="CM" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityContainer Name="DSGVOModelStoreContainer">
+    <EntitySet Name="kunden" EntityType="Self.kunden" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [kunden].[kunr] AS [kunr], 
+    [kunden].[name1] AS [name1], 
+    [kunden].[name2] AS [name2], 
+    [kunden].[strasse] AS [strasse], 
+    [kunden].[land] AS [land], 
+    [kunden].[plz] AS [plz], 
+    [kunden].[ort] AS [ort], 
+    [kunden].[kaufdat] AS [kaufdat], 
+    [kunden].[seriennr] AS [seriennr], 
+    [kunden].[agentur] AS [agentur], 
+    [kunden].[version] AS [version], 
+    [kunden].[shareware] AS [shareware], 
+    [kunden].[maxzimm] AS [maxzimm], 
+    [kunden].[verstand] AS [verstand], 
+    [kunden].[verdatum] AS [verdatum], 
+    [kunden].[lizend] AS [lizend], 
+    [kunden].[lizenddat] AS [lizenddat], 
+    [kunden].[email] AS [email], 
+    [kunden].[hopeweb] AS [hopeweb], 
+    [kunden].[hopewebid] AS [hopewebid], 
+    [kunden].[feedback] AS [feedback], 
+    [kunden].[aktversion] AS [aktversion], 
+    [kunden].[lastcheck] AS [lastcheck], 
+    [kunden].[CM] AS [CM]
+    FROM [dbo].[kunden] AS [kunden]</DefiningQuery>
+    </EntitySet>
+  </EntityContainer>
+</Schema>

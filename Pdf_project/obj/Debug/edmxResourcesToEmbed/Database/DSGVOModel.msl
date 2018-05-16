@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="DSGVOModelStoreContainer" CdmEntityContainer="DSGVOEntities">
+    <EntitySetMapping Name="kundens">
+      <EntityTypeMapping TypeName="DSGVOModel.kunden">
+        <MappingFragment StoreEntitySet="kunden">
+          <ScalarProperty Name="kunr" ColumnName="kunr" />
+          <ScalarProperty Name="name1" ColumnName="name1" />
+          <ScalarProperty Name="name2" ColumnName="name2" />
+          <ScalarProperty Name="strasse" ColumnName="strasse" />
+          <ScalarProperty Name="land" ColumnName="land" />
+          <ScalarProperty Name="plz" ColumnName="plz" />
+          <ScalarProperty Name="ort" ColumnName="ort" />
+          <ScalarProperty Name="kaufdat" ColumnName="kaufdat" />
+          <ScalarProperty Name="seriennr" ColumnName="seriennr" />
+          <ScalarProperty Name="agentur" ColumnName="agentur" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="shareware" ColumnName="shareware" />
+          <ScalarProperty Name="maxzimm" ColumnName="maxzimm" />
+          <ScalarProperty Name="verstand" ColumnName="verstand" />
+          <ScalarProperty Name="verdatum" ColumnName="verdatum" />
+          <ScalarProperty Name="lizend" ColumnName="lizend" />
+          <ScalarProperty Name="lizenddat" ColumnName="lizenddat" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="hopeweb" ColumnName="hopeweb" />
+          <ScalarProperty Name="hopewebid" ColumnName="hopewebid" />
+          <ScalarProperty Name="feedback" ColumnName="feedback" />
+          <ScalarProperty Name="aktversion" ColumnName="aktversion" />
+          <ScalarProperty Name="lastcheck" ColumnName="lastcheck" />
+          <ScalarProperty Name="CM" ColumnName="CM" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

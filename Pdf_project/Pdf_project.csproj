@@ -183,23 +183,23 @@
     <Compile Include="Controllers\DashboardController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PageNotFoundController.cs" />
-    <Compile Include="Database\Customer.cs">
-      <DependentUpon>EntityModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Database\EntityModel.Context.cs">
+    <Compile Include="Database\DSGVOModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>EntityModel.Context.tt</DependentUpon>
+      <DependentUpon>DSGVOModel.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Database\EntityModel.cs">
+    <Compile Include="Database\DSGVOModel.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>EntityModel.tt</DependentUpon>
+      <DependentUpon>DSGVOModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Database\EntityModel.Designer.cs">
+    <Compile Include="Database\DSGVOModel.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>EntityModel.edmx</DependentUpon>
+      <DependentUpon>DSGVOModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Database\kunden.cs">
+      <DependentUpon>DSGVOModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -212,15 +212,15 @@
   <ItemGroup>
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\dashboard.css" />
-    <Content Include="Database\EntityModel.Context.tt">
+    <Content Include="Database\DSGVOModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>EntityModel.edmx</DependentUpon>
-      <LastGenOutput>EntityModel.Context.cs</LastGenOutput>
+      <DependentUpon>DSGVOModel.edmx</DependentUpon>
+      <LastGenOutput>DSGVOModel.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Database\EntityModel.tt">
+    <Content Include="Database\DSGVOModel.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>EntityModel.edmx</DependentUpon>
-      <LastGenOutput>EntityModel.cs</LastGenOutput>
+      <DependentUpon>DSGVOModel.edmx</DependentUpon>
+      <LastGenOutput>DSGVOModel.cs</LastGenOutput>
     </Content>
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -257,12 +257,12 @@
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
-    <EntityDeploy Include="Database\EntityModel.edmx">
+    <EntityDeploy Include="Database\DSGVOModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>EntityModel.Designer.cs</LastGenOutput>
+      <LastGenOutput>DSGVOModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="Database\EntityModel.edmx.diagram">
-      <DependentUpon>EntityModel.edmx</DependentUpon>
+    <Content Include="Database\DSGVOModel.edmx.diagram">
+      <DependentUpon>DSGVOModel.edmx</DependentUpon>
     </Content>
     <None Include="packages.config" />
     <Content Include="Views\_ViewStart.cshtml" />

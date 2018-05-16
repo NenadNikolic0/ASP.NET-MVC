@@ -9,6 +9,8 @@ using Pdf_project.Models;
 using Microsoft.Office.Interop.Word;
 using Spire;
 using System.IO;
+using System.Net.Mail;
+using System.Net;
 
 namespace Pdf_project.Controllers
 {
@@ -24,10 +26,10 @@ namespace Pdf_project.Controllers
                 ViewBag.Email = Request["email"].ToString().Trim();
 
                 //Get data from db for current user 
-                hopeCRMEntitiesSecond db = new hopeCRMEntitiesSecond();
+                DSGVOEntities db = new DSGVOEntities();
                 string zip = Request["zip"].ToString().Trim();
 
-                Customer CurrentUser = db.Customers.Where(t => t.zip.Trim() == zip).First();
+                kunden CurrentUser = db.kundens.Where(t => t.plz.Trim() == zip).First();
 
             
                 //Adding user data to viewbag
@@ -41,24 +43,44 @@ namespace Pdf_project.Controllers
                     ViewBag.AgName2 = CurrentUser.name2.ToString().Trim();
                 }
 
-                if (CurrentUser.street != null)
+                if (CurrentUser.strasse != null)
                 {
-                    ViewBag.Street = CurrentUser.street.ToString().Trim() + " " + CurrentUser.streetno.ToString().Trim();
+                    ViewBag.Street = CurrentUser.strasse.ToString().Trim();
                 }
 
-                if (CurrentUser.zip != null)
+                if (CurrentUser.plz != null)
                 {
-                    ViewBag.Zip = CurrentUser.zip.ToString().Trim();
+                    ViewBag.Zip = CurrentUser.plz.ToString().Trim();
                 }
 
-                if (CurrentUser.city != null)
+                if (CurrentUser.ort != null)
                 {
-                    ViewBag.City = CurrentUser.city.ToString().Trim();
+                    ViewBag.City = CurrentUser.ort.ToString().Trim();
                 }
 
-                if (CurrentUser.countryid != null)
+                if (CurrentUser.land!= null)
                 {
-                    ViewBag.Country = CurrentUser.countryid.ToString().Trim();
+                    //Set country 
+                    switch (CurrentUser.land.ToString().Trim())
+                    {
+                        case "D":
+                            CurrentUser.land = "Deutschland";
+                            break;
+                        case "A":
+                            CurrentUser.land = "Österreich";
+                            break;
+                        case "CH":
+                            CurrentUser.land = "Schweiz";
+                            break;
+                        default:                          
+                            break;
+                    }
+
+
+
+
+
+                    ViewBag.Country = CurrentUser.land.ToString().Trim();
                 }
 
                 if (CurrentUser.email != null)
@@ -100,10 +122,10 @@ namespace Pdf_project.Controllers
         {
 
             //Get data from db for current user 
-            hopeCRMEntitiesSecond db = new hopeCRMEntitiesSecond();
+            DSGVOEntities db = new DSGVOEntities();
             
 
-            Customer CurrentUser = db.Customers.Where( t => t.zip == details.Zip.ToString().Trim() && t.serialno.Substring(15).Trim() == details.SerialNo.ToString().Trim()).First();
+            kunden CurrentUser = db.kundens.Where( t => t.plz == details.Zip.ToString().Trim() && t.seriennr.Substring(15).Trim() == details.SerialNo.ToString().Trim()).First();
 
 
             //Adding user data to viewbag
@@ -117,21 +139,38 @@ namespace Pdf_project.Controllers
                 details.Name2 = CurrentUser.name2.ToString().Trim();
             }
 
-            if (CurrentUser.street != null)
+            if (CurrentUser.strasse != null)
             {
-                details.Street= CurrentUser.street.ToString().Trim() + " " + CurrentUser.streetno.ToString().Trim();
+                details.Street= CurrentUser.strasse.ToString().Trim() + " " ;
             }
 
             
 
-            if (CurrentUser.city != null)
+            if (CurrentUser.ort != null)
             {
-                details.City= CurrentUser.city.ToString().Trim();
+                details.City= CurrentUser.ort.ToString().Trim();
             }
 
-            if (CurrentUser.countryid != null)
+            if (CurrentUser.land != null)
             {
-                details.Country = CurrentUser.countryid.ToString().Trim();
+                //Set country 
+                switch (CurrentUser.land.ToString().Trim())
+                {
+                    case "D":
+                        CurrentUser.land = "Deutschland";
+                        break;
+                    case "A":
+                        CurrentUser.land = "Österreich";
+                        break;
+                    case "CH":
+                        CurrentUser.land = "Schweiz";
+                        break;
+                    default:
+                        break;
+                }
+
+
+                details.Country = CurrentUser.land.ToString().Trim();
             }
 
             if (CurrentUser.email != null)
@@ -244,6 +283,38 @@ namespace Pdf_project.Controllers
                 wDoc.ExportAsFixedFormat(OutputFileName: pdfName, ExportFormat: WdExportFormat.wdExportFormatPDF, UseISO19005_1: true);
 
                 wDoc.Close();
+
+
+                ////Send email 
+                //SmtpClient smtpClient = new SmtpClient();
+                //NetworkCredential basicCredential =
+                //    new NetworkCredential("dsgvo@hope-software.com", "hopeDSVGO");
+                //System.Net.Mail.MailMessage message = new System.Net.Mail.MailMessage();
+                //MailAddress fromAddress = new MailAddress("office@hope-software.com");
+
+                //smtpClient.Host = "smtp.1und1.de";
+                //smtpClient.UseDefaultCredentials = false;
+                //smtpClient.Credentials = basicCredential;
+
+                //smtpClient.Port = 587;
+                //smtpClient.EnableSsl = true;
+
+                //message.From = fromAddress;
+                //message.Subject = "your subject";
+                ////Set IsBodyHtml to true means you can send HTML email.
+                //message.IsBodyHtml = true;
+                //message.Body = "<h1>your message body</h1>";
+                //message.To.Add("nikolic_n@hotmail.com");
+
+                //smtpClient.Send(message);
+
+
+                //Call webservice action 
+
+
+
+
+
 
                 return Json( new { Result = "true", Name = HashName });
 

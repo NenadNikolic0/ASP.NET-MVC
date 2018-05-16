@@ -150,6 +150,7 @@ body {
 
 .agreement-button {
     margin-top: 30px;
+    width: 564px;    
 }
 
 .download-pdf, .preview-pdf {
@@ -207,5 +208,28 @@ a:hover {
 }
 
 input[type='text'] {
-    text-align:center;
+    text-align: left;
+    padding-left: 5px;
+}
+
+.form-field-long {
+    width: 380px;
+    border: 1px solid #000;
+    color: #a8a8a8;
+}
+
+.form-field-short {
+    width:100px;
+    border: 1px solid #000;
+    color: #a8a8a8;
+}
+
+.form-field-medium {
+    width: 272px;
+    border: 1px solid #000;
+    color: #a8a8a8;   
+}
+
+.checkbox-inline {
+    font-weight:bold;
 }
