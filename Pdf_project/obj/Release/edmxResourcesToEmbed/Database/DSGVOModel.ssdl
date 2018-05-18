@@ -34,6 +34,7 @@ warning 6002: The table/view 'DSGVO.dbo.kunden' does not have a primary key defi
     <Property Name="aktversion" Type="nvarchar" MaxLength="255" />
     <Property Name="lastcheck" Type="nvarchar" MaxLength="255" />
     <Property Name="CM" Type="bit" Nullable="false" />
+    <Property Name="contractuser" Type="nvarchar" MaxLength="255" />
   </EntityType>
   <EntityContainer Name="DSGVOModelStoreContainer">
     <EntitySet Name="kunden" EntityType="Self.kunden" store:Type="Tables" store:Schema="dbo">
@@ -61,7 +62,8 @@ warning 6002: The table/view 'DSGVO.dbo.kunden' does not have a primary key defi
     [kunden].[feedback] AS [feedback], 
     [kunden].[aktversion] AS [aktversion], 
     [kunden].[lastcheck] AS [lastcheck], 
-    [kunden].[CM] AS [CM]
+    [kunden].[CM] AS [CM], 
+    [kunden].[contractuser] AS [contractuser]
     FROM [dbo].[kunden] AS [kunden]</DefiningQuery>
     </EntitySet>
   </EntityContainer>

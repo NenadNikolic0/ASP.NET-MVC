@@ -32,6 +32,7 @@
     <Property Name="aktversion" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
     <Property Name="lastcheck" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
     <Property Name="CM" Type="Boolean" Nullable="false" />
+    <Property Name="contractuser" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
   </EntityType>
   <EntityContainer Name="DSGVOEntities" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="kundens" EntityType="Self.kunden" />

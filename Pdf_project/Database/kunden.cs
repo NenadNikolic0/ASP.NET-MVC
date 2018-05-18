@@ -38,5 +38,6 @@ namespace Pdf_project.Database
         public string aktversion { get; set; }
         public string lastcheck { get; set; }
         public bool CM { get; set; }
+        public string contractuser { get; set; }
     }
 }

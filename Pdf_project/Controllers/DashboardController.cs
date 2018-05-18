@@ -11,6 +11,7 @@ using Spire;
 using System.IO;
 using System.Net.Mail;
 using System.Net;
+using System.Text;
 
 namespace Pdf_project.Controllers
 {
@@ -20,7 +21,7 @@ namespace Pdf_project.Controllers
         public ActionResult Index()
         {
             //Check if user is logged, if is open dashboard
-            if (Convert.ToInt32(Session["isLoggedIn"]) == 1 && Session["userZip"].ToString().Trim() == Request["zip"].ToString().Trim())
+            if (Convert.ToInt32(Session["isLoggedIn"]) == 1 && Session["userZip"].ToString().Trim() == Request["zip"].ToString().Trim() && Session["serialNo"].ToString().Trim() == Request["serialno"].ToString().Trim())
             {
                 ViewBag.Zip = Request["zip"].ToString().Trim();
                 ViewBag.Email = Request["email"].ToString().Trim();
@@ -28,12 +29,13 @@ namespace Pdf_project.Controllers
                 //Get data from db for current user 
                 DSGVOEntities db = new DSGVOEntities();
                 string zip = Request["zip"].ToString().Trim();
+                string serialno = Request["serialno"].ToString().Trim();
 
-                kunden CurrentUser = db.kundens.Where(t => t.plz.Trim() == zip).First();
+                kunden CurrentUser = db.kundens.Where(t => t.plz == zip && t.seriennr.Substring(15).Trim() == serialno).First();
 
-            
+
                 //Adding user data to viewbag
-                if (CurrentUser.name1!=null)
+                if (CurrentUser.name1 != null)
                 {
                     ViewBag.AgName1 = CurrentUser.name1.ToString().Trim();
                 }
@@ -58,7 +60,7 @@ namespace Pdf_project.Controllers
                     ViewBag.City = CurrentUser.ort.ToString().Trim();
                 }
 
-                if (CurrentUser.land!= null)
+                if (CurrentUser.land != null)
                 {
                     //Set country 
                     switch (CurrentUser.land.ToString().Trim())
@@ -72,7 +74,7 @@ namespace Pdf_project.Controllers
                         case "CH":
                             CurrentUser.land = "Schweiz";
                             break;
-                        default:                          
+                        default:
                             break;
                     }
 
@@ -106,6 +108,8 @@ namespace Pdf_project.Controllers
                 }
 
 
+                //Set  serial no 
+                ViewBag.SerialNo = Session["serialNo"].ToString().Trim();
 
                 return View();
             }
@@ -115,7 +119,7 @@ namespace Pdf_project.Controllers
             {
                 return RedirectToAction("index", "home");
             }
-            
+
         }
 
         public ActionResult CreateDocumentsFromTemplate(ContractDetails details)
@@ -123,76 +127,173 @@ namespace Pdf_project.Controllers
 
             //Get data from db for current user 
             DSGVOEntities db = new DSGVOEntities();
-            
-
-            kunden CurrentUser = db.kundens.Where( t => t.plz == details.Zip.ToString().Trim() && t.seriennr.Substring(15).Trim() == details.SerialNo.ToString().Trim()).First();
 
 
-            //Adding user data to viewbag
-            if (CurrentUser.name1 != null)
+            kunden CurrentUser = db.kundens.Where(t => t.plz == details.UserZip.ToString().Trim() && t.seriennr.Substring(15).Trim() == details.SerialNo.ToString().Trim()).First();
+
+            ////Update contractuser in db 
+            //CurrentUser.contractuser = details.ContractUser.ToString().Trim();
+
+            ////Change email if it is changed 
+            //if (CurrentUser.email.ToString().Trim() != details.Email.ToString().Trim())
+            //{
+            //    CurrentUser.email = details.Email.ToString().Trim();
+            //}
+
+            //db.SaveChanges();
+
+
+            //Check if changes in data exist and send it in email 
+            StringBuilder dataChanges = new StringBuilder();
+
+            bool ChangesExist = false;
+
+            dataChanges.Append("<table>");
+            dataChanges.Append(" <tr><th>Previous data</th><th>Changed data from user</th></tr>");
+
+
+            if (CurrentUser.name1.ToString().Trim() != details.Name1.ToString().Trim())
             {
-                details.Name1 = CurrentUser.name1.ToString().Trim();
+                ChangesExist = true;
+                dataChanges.Append(" <tr><td>" + CurrentUser.name1.ToString().Trim() + " </td><td>" + details.Name1.ToString().Trim() + "</td></tr>");
+
             }
 
-            if (CurrentUser.name2 != null)
+            if (CurrentUser.name2.ToString().Trim() != details.Name2.ToString().Trim())
             {
-                details.Name2 = CurrentUser.name2.ToString().Trim();
+                ChangesExist = true;
+                dataChanges.Append(" <tr><td>" + CurrentUser.name2.ToString().Trim() + " </td><td>" + details.Name2.ToString().Trim() + "</td></tr>");
+
             }
 
-            if (CurrentUser.strasse != null)
+            if (CurrentUser.strasse.ToString().Trim() != details.Street.ToString().Trim())
             {
-                details.Street= CurrentUser.strasse.ToString().Trim() + " " ;
+                ChangesExist = true;
+                dataChanges.Append(" <tr><td>" + CurrentUser.strasse.ToString().Trim() + " </td><td>" + details.Street.ToString().Trim() + "</td></tr>");
+
             }
 
-            
-
-            if (CurrentUser.ort != null)
+            if (CurrentUser.plz.ToString().Trim() != details.Zip.ToString().Trim())
             {
-                details.City= CurrentUser.ort.ToString().Trim();
+                ChangesExist = true;
+                dataChanges.Append(" <tr><td>" + CurrentUser.plz.ToString().Trim() + " </td><td>" + details.Zip.ToString().Trim() + "</td></tr>");
+
             }
 
-            if (CurrentUser.land != null)
+            if (CurrentUser.ort.ToString().Trim() != details.City.ToString().Trim())
             {
-                //Set country 
-                switch (CurrentUser.land.ToString().Trim())
-                {
-                    case "D":
-                        CurrentUser.land = "Deutschland";
-                        break;
-                    case "A":
-                        CurrentUser.land = "Österreich";
-                        break;
-                    case "CH":
-                        CurrentUser.land = "Schweiz";
-                        break;
-                    default:
-                        break;
-                }
+                ChangesExist = true;
+                dataChanges.Append(" <tr><td>" + CurrentUser.ort.ToString().Trim() + " </td><td>" + details.City.ToString().Trim() + "</td></tr>");
 
-
-                details.Country = CurrentUser.land.ToString().Trim();
             }
 
-            if (CurrentUser.email != null)
+            if (CurrentUser.land.ToString().Trim() != details.Country.ToString().Trim())
             {
-                details.Contact = CurrentUser.email.ToString().Trim();
+                ChangesExist = true;
+                dataChanges.Append(" <tr><td>" + CurrentUser.land.ToString().Trim() + " </td><td>" + details.Country.ToString().Trim() + "</td></tr>");
+
+            }
+
+            if (CurrentUser.email.ToString().Trim() != details.Email.ToString().Trim())
+            {
+                ChangesExist = true;
+                dataChanges.Append(" <tr><td>" + CurrentUser.email.ToString().Trim() + " </td><td>" + details.Email.ToString().Trim() + "</td></tr>");
+
+            }
+
+            if (CurrentUser.contractuser == null)
+            {
+                ChangesExist = true;
+                dataChanges.Append(" <tr><td>Empty</td><td>" + details.ContractUser.ToString().Trim() + "</td></tr>");
+
+            }
+
+
+
+
+
+            ////Adding user data to viewbag
+            //if (CurrentUser.name1 != null)
+            //{
+            //    details.Name1 = CurrentUser.name1.ToString().Trim();
+            //}
+
+            //if (CurrentUser.name2 != null)
+            //{
+            //    details.Name2 = CurrentUser.name2.ToString().Trim();
+            //}
+
+            //if (CurrentUser.strasse != null)
+            //{
+            //    details.Street= CurrentUser.strasse.ToString().Trim() + " " ;
+            //}
+
+
+
+            //if (CurrentUser.ort != null)
+            //{
+            //    details.City= CurrentUser.ort.ToString().Trim();
+            //}
+
+            //if (CurrentUser.land != null)
+            //{
+            //    //Set country 
+            //    switch (CurrentUser.land.ToString().Trim())
+            //    {
+            //        case "D":
+            //            CurrentUser.land = "Deutschland";
+            //            break;
+            //        case "A":
+            //            CurrentUser.land = "Österreich";
+            //            break;
+            //        case "CH":
+            //            CurrentUser.land = "Schweiz";
+            //            break;
+            //        default:
+            //            break;
+            //    }
+
+
+            //    details.Country = CurrentUser.land.ToString().Trim();
+            //}
+
+            //if (CurrentUser.email != null)
+            //{
+            //    details.Contact = CurrentUser.email.ToString().Trim();
+            //}
+
+
+            // Set country
+            switch (details.Country.ToString().Trim())
+            {
+                case "D":
+                    details.Country = "Deutschland";
+                    break;
+                case "A":
+                    details.Country = "Österreich";
+                    break;
+                case "CH":
+                    details.Country = "Schweiz";
+                    break;
+                default:
+                    break;
             }
 
 
             string Result, Name;
 
             //Generating strong name as word and pdf name
-            string HashName = UserInfo.CalculateMD5Hash(details.SerialNo + "-" + details.Zip);
+            string HashName = UserInfo.CalculateMD5Hash(details.SerialNo + "-" + details.UserZip);
 
 
             try
             {
                 Spire.Doc.Document document = new Spire.Doc.Document();
-                
+
                 document.LoadFromFile(Server.MapPath("~/Template/template.docx").ToString());
 
-               
-                if(details.Name1!=null && details.Name1.ToString().Trim() != "")
+
+                if (details.Name1 != null && details.Name1.ToString().Trim() != "")
                 {
                     document.Replace("##AGName1##", details.Name1, false, true);
                 }
@@ -256,9 +357,15 @@ namespace Pdf_project.Controllers
                     document.Replace("##AGCountry##", "", false, true);
                 }
 
-                if (details.Contact != null && details.Contact.ToString().Trim() != "")
+                if (details.ContractUser != null && details.ContractUser.ToString().Trim() != "")
                 {
-                    document.Replace("##AGCONTACT##", details.Contact, false, true);
+                    document.Replace("##ContractUser##", details.ContractUser, false, true);
+                }
+
+
+                if (details.Email != null && details.Email.ToString().Trim() != "")
+                {
+                    document.Replace("##AGCONTACT##", details.Email, false, true);
                 }
 
                 else
@@ -275,7 +382,7 @@ namespace Pdf_project.Controllers
                 //Code for making connection with existing word template 
                 Microsoft.Office.Interop.Word._Application wApp = new Microsoft.Office.Interop.Word.Application();
                 Microsoft.Office.Interop.Word.Documents wDocs = wApp.Documents;
-                Microsoft.Office.Interop.Word._Document wDoc = wDocs.Open(Server.MapPath("~/Word/").ToString() + HashName + ".docx", ReadOnly: false, Visible:false);
+                Microsoft.Office.Interop.Word._Document wDoc = wDocs.Open(Server.MapPath("~/Word/").ToString() + HashName + ".docx", ReadOnly: false, Visible: false);
                 wDoc.Activate();
 
                 string pdfName = @Server.MapPath("~/Pdf/").ToString() + HashName + ".pdf";
@@ -285,28 +392,50 @@ namespace Pdf_project.Controllers
                 wDoc.Close();
 
 
-                ////Send email 
-                //SmtpClient smtpClient = new SmtpClient();
-                //NetworkCredential basicCredential =
-                //    new NetworkCredential("dsgvo@hope-software.com", "hopeDSVGO");
-                //System.Net.Mail.MailMessage message = new System.Net.Mail.MailMessage();
-                //MailAddress fromAddress = new MailAddress("office@hope-software.com");
+                //Send email with pdf as attachemnt 
+                SmtpClient smtpClient = new SmtpClient();
+                NetworkCredential basicCredential =
+                    new NetworkCredential("dsgvo@hope-software.com", "hopeDSGVO");
+                System.Net.Mail.MailMessage message = new System.Net.Mail.MailMessage();
+                MailAddress fromAddress = new MailAddress("dsgvo@hope-software.com");
 
-                //smtpClient.Host = "smtp.1und1.de";
-                //smtpClient.UseDefaultCredentials = false;
-                //smtpClient.Credentials = basicCredential;
+                smtpClient.Host = "smtp.1und1.de";
+                smtpClient.UseDefaultCredentials = false;
+                smtpClient.Credentials = basicCredential;
 
-                //smtpClient.Port = 587;
-                //smtpClient.EnableSsl = true;
+                smtpClient.Port = 587;
+                smtpClient.EnableSsl = true;
 
-                //message.From = fromAddress;
-                //message.Subject = "your subject";
-                ////Set IsBodyHtml to true means you can send HTML email.
-                //message.IsBodyHtml = true;
-                //message.Body = "<h1>your message body</h1>";
-                //message.To.Add("nikolic_n@hotmail.com");
+                message.From = fromAddress;
+                message.Subject = "hope-DSGVO - AV-Vertrag, Kunde: " + details.UserZip + " - hotel: " + details.Name1;
 
-                //smtpClient.Send(message);
+                message.Attachments.Add(new System.Net.Mail.Attachment(Server.MapPath("~/Pdf/").ToString() + HashName + ".pdf"));
+
+                //office@hope-software.com
+
+                message.To.Add("office@hope-software.com");
+
+                smtpClient.Send(message);
+
+
+                //Send email if user changed data on html form info@hope-software.com
+
+                if (ChangesExist)
+                {
+                    message.From = fromAddress;
+                    message.Subject = "hope-DSGVO - Kundendaten geändert: " + details.UserZip + " - hotel: " + details.Name1;
+
+
+                    message.IsBodyHtml = true;
+
+                    message.Body = dataChanges.ToString();
+                    //office@hope-software.com
+
+                    message.To.Add("office@hope-software.com");
+
+                    smtpClient.Send(message);
+                }
+
 
 
                 //Call webservice action 
@@ -316,7 +445,7 @@ namespace Pdf_project.Controllers
 
 
 
-                return Json( new { Result = "true", Name = HashName });
+                return Json(new { Result = "true", Name = HashName });
 
 
             }
@@ -338,7 +467,7 @@ namespace Pdf_project.Controllers
         {
             string Name = Request["name"];
             byte[] fileBytes = System.IO.File.ReadAllBytes(Server.MapPath("~/Pdf/").ToString() + Name + ".pdf");
-            string fileName = Name +".pdf";
+            string fileName = Name + ".pdf";
             return File(fileBytes, System.Net.Mime.MediaTypeNames.Application.Octet, fileName);
         }
 

@@ -15,7 +15,7 @@
 
     <div class="col-xs-3">
         <div class="col-xs-10">
-            <span class="glyphicon glyphicon-user user-logout">&nbsp;@ViewBag.Zip</span>
+            <span class="glyphicon glyphicon-user user-logout">&nbsp;@ViewBag.SerialNo - @ViewBag.Zip</span>
         </div>
 
         <div class="col-xs-2">
@@ -49,42 +49,42 @@
                                 @if (ViewBag.AgName1 != null)
                                 {
                                     <p>
-                                        <input class="form-field-long" type="text" value="@ViewBag.AgName1" />
+                                        <input class="form-field-long" id="name1" type="text" value="@ViewBag.AgName1" />
                                     </p>
                                 }
 
                                 else
                                 {
                                     <p>
-                                        <input class="form-field-long" type="text" />
+                                        <input class="form-field-long" id="name1" type="text" />
                                     </p>
                                 }
 
                                 @if (ViewBag.AgName2 != null)
                                 {
                                     <p>
-                                        <input class="form-field-long" type="text" value="@ViewBag.AgName2" />
+                                        <input class="form-field-long" id="name2" type="text" value="@ViewBag.AgName2" />
                                     </p>
                                 }
 
                                 else
                                 {
                                     <p>
-                                        <input class="form-field-long" type="text" />
+                                        <input class="form-field-long" id="name2" type="text" />
                                     </p>
                                 }
 
                                 @if (ViewBag.Street != null)
                                 {
                                     <p>
-                                        <input class="form-field-long" type="text" value="@ViewBag.Street" />
+                                        <input class="form-field-long" id="street" type="text" value="@ViewBag.Street" />
                                     </p>
                                 }
 
                                 else
                                 {
                                     <p>
-                                        <input class="form-field-long" type="text" />
+                                        <input class="form-field-long" id="street" type="text" />
                                     </p>
                                 }
 
@@ -92,14 +92,14 @@
                                 @if (ViewBag.Zip != null && ViewBag.City != null)
                                 {
                                     <p>
-                                        <input class="form-field-short" type="text" value="@ViewBag.Zip" /> &nbsp;<input class="form-field-medium" type="text" value="@ViewBag.City" />
+                                        <input class="form-field-short" type="text" id="zip" value="@ViewBag.Zip" /> &nbsp;<input class="form-field-medium" id="city" type="text" value="@ViewBag.City" />
                                     </p>
                                 }
 
                                 else
                                 {
                                     <p>
-                                        <input class="form-field-short" type="text" /> &nbsp;<input class="form-field-medium" type="text" />
+                                        <input class="form-field-short" id="zip" type="text" /> &nbsp;<input class="form-field-medium" id="city" type="text" />
                                     </p>
                                 }
 
@@ -107,7 +107,7 @@
                                 {
 
                                     <p>
-                                        <input class="form-field-long" type="text" value="@ViewBag.Country" />
+                                        <input class="form-field-long" type="text" value="@ViewBag.Country" id="country" />
                                     </p>
 
                                 }
@@ -115,7 +115,7 @@
                                 else
                                 {
                                     <p>
-                                        <input class="form-field-long" type="text" />
+                                        <input class="form-field-long" type="text" id="country" />
                                     </p>
                                 }
 
@@ -131,13 +131,16 @@
                         </tr>
                         <tr>
                             <td width="50%">
+
+                                <p><input class="form-field-long" type="text" id="contractUser" placeholder="Name"  /></p>
+
                                 @if (ViewBag.AgContact != null)
                                 {
-                                    <p><input class="form-field-long" type="text" value="@ViewBag.AgContact" /></p>
+                                    <p><input class="form-field-long" type="text" id="contactEmail" value="@ViewBag.AgContact" /></p>
                                 }
                                 else
                                 {
-                                    <p><input class="form-field-long" type="text"  /></p>
+                                    <p><input class="form-field-long" type="text" /></p>
                                 }
 
                             </td>
@@ -544,18 +547,73 @@
                     <strong>Umfang, Art und Zweck der T&auml;tigkeit:</strong>
                 </p>
                 <p>Fernwartungssoftware</p>
+                <h2>Weiterer Auftragsverarbeiter Nr. 10:</h2>
+                <p>
+                    <strong>Name:</strong>
+                </p>
+                <p>Arne Madro EDV Organisation GmbH</p>
+                <p>
+                    <strong>Anschrift inklusive Land:</strong>
+                </p>
+                <p>Güterfelder Damm 69-71, 14532 Stahnsdorf, Deutschland</p>
+                <p>
+                    <strong>Umfang, Art und Zweck der T&auml;tigkeit:</strong>
+                </p>
+                <p>Support- und Vertriebsdienstleistungen</p>
+                <h2>Weiterer Auftragsverarbeiter Nr. 11:</h2>
+                <p>
+                    <strong>Name:</strong>
+                </p>
+                <p>cks GmbH</p>
+                <p>
+                    <strong>Anschrift inklusive Land:</strong>
+                </p>
+                <p>Im Herzthauen 1, 77731 Willstätt - Legelshurst, Deutschland</p>
+                <p>
+                    <strong>Umfang, Art und Zweck der T&auml;tigkeit:</strong>
+                </p>
+                <p>Support- und Vertriebsdienstleistungen</p>
+                <h2>Weiterer Auftragsverarbeiter Nr. 12:</h2>
+                <p>
+                    <strong>Name:</strong>
+                </p>
+                <p>NOKA system Andreas Hoffmann</p>
+                <p>
+                    <strong>Anschrift inklusive Land:</strong>
+                </p>
+                <p>Tiefer Weg 2a, 49808 Lingen, Deutschland</p>
+                <p>
+                    <strong>Umfang, Art und Zweck der T&auml;tigkeit:</strong>
+                </p>
+                <p>Support- und Vertriebsdienstleistungen</p>
+                <h2>Weiterer Auftragsverarbeiter Nr. 13:</h2>
+                <p>
+                    <strong>Name:</strong>
+                </p>
+                <p>acmeo GmbH</p>
+                <p>
+                    <strong>Anschrift inklusive Land:</strong>
+                </p>
+                <p>Mailänder Str. 2 / Expo Plaza, 30539 Hannover, Deutschland</p>
+                <p>
+                    <strong>Umfang, Art und Zweck der T&auml;tigkeit:</strong>
+                </p>
+                <p>Support- und Vertriebsdienstleistungen</p>
             </div>
 
             <!--Contract footer-->
             <div class="contract-footer">
                 <!--Agreement checkbox-->
                 <div class="agreement-checkbox">
-                    <label class="checkbox-inline"><input type="checkbox" id="agreementCheckbox">Ich habe diesen Vertrag gelesen und akzeptiere diesen mit Klicken auf den Button <br/>
-                    "Akzeptieren und elektronisch unterschreiben"
+                    <label class="checkbox-inline">
+                        <input type="checkbox" id="agreementCheckbox">Ich habe diesen Vertrag gelesen und akzeptiere diesen mit Klicken auf den Button <br />
+                        "Akzeptieren und elektronisch unterschreiben"
                     </label>
                 </div>
 
                 <button class="btn btn-default agreement-button" id="agreementButton" disabled>Akzeptieren und elektronisch unterschreiben</button>
+
+                <span class="error-field-message">Muss Pflichtfeld ausfüllen!</span>
             </div>
 
         </div>
@@ -618,7 +676,7 @@
 <!--Logout div-->
 <div class="row logout-div">
     <div class="row logout-div-body">
-        <span class="zip">@ViewBag.Zip</span>
+        <span class="zip">@ViewBag.SerialNo - @ViewBag.Zip</span>
         <span class="email">@ViewBag.Email</span>
     </div>
 

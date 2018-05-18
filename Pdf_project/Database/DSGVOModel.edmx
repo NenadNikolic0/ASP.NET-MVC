@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="DSGVOModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="DSGVOModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <!--Errors Found During Generation:
 warning 6002: The table/view 'DSGVO.dbo.kunden' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="kunden">
@@ -39,6 +39,7 @@ warning 6002: The table/view 'DSGVO.dbo.kunden' does not have a primary key defi
           <Property Name="aktversion" Type="nvarchar" MaxLength="255" />
           <Property Name="lastcheck" Type="nvarchar" MaxLength="255" />
           <Property Name="CM" Type="bit" Nullable="false" />
+          <Property Name="contractuser" Type="nvarchar" MaxLength="255" />
         </EntityType>
         <EntityContainer Name="DSGVOModelStoreContainer">
           <EntitySet Name="kunden" EntityType="Self.kunden" store:Type="Tables" store:Schema="dbo">
@@ -66,12 +67,12 @@ warning 6002: The table/view 'DSGVO.dbo.kunden' does not have a primary key defi
     [kunden].[feedback] AS [feedback], 
     [kunden].[aktversion] AS [aktversion], 
     [kunden].[lastcheck] AS [lastcheck], 
-    [kunden].[CM] AS [CM]
+    [kunden].[CM] AS [CM], 
+    [kunden].[contractuser] AS [contractuser]
     FROM [dbo].[kunden] AS [kunden]</DefiningQuery>
           </EntitySet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="DSGVOModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -107,6 +108,7 @@ warning 6002: The table/view 'DSGVO.dbo.kunden' does not have a primary key defi
           <Property Name="aktversion" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Name="lastcheck" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Name="CM" Type="Boolean" Nullable="false" />
+          <Property Name="contractuser" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityContainer Name="DSGVOEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="kundens" EntityType="Self.kunden" />
@@ -120,6 +122,7 @@ warning 6002: The table/view 'DSGVO.dbo.kunden' does not have a primary key defi
           <EntitySetMapping Name="kundens">
             <EntityTypeMapping TypeName="DSGVOModel.kunden">
               <MappingFragment StoreEntitySet="kunden">
+                <ScalarProperty Name="contractuser" ColumnName="contractuser" />
                 <ScalarProperty Name="kunr" ColumnName="kunr" />
                 <ScalarProperty Name="name1" ColumnName="name1" />
                 <ScalarProperty Name="name2" ColumnName="name2" />

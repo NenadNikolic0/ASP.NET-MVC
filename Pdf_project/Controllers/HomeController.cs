@@ -52,6 +52,7 @@ namespace Pdf_project.Controllers
                     Result = "True";
                     Session["isLoggedIn"] = 1;
                     Session["userZip"] = customer[0].plz.ToString().Trim();
+                    Session["serialNo"] = customer[0].seriennr.Substring(15).Trim();
                     user.Result = Result;
                     user.UserZip = customer[0].plz.ToString().Trim();
                     user.UserEmail = customer[0].email.ToString().Trim();

@@ -4,6 +4,7 @@
     <EntitySetMapping Name="kundens">
       <EntityTypeMapping TypeName="DSGVOModel.kunden">
         <MappingFragment StoreEntitySet="kunden">
+          <ScalarProperty Name="contractuser" ColumnName="contractuser" />
           <ScalarProperty Name="kunr" ColumnName="kunr" />
           <ScalarProperty Name="name1" ColumnName="name1" />
           <ScalarProperty Name="name2" ColumnName="name2" />

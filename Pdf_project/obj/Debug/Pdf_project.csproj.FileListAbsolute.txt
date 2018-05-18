@@ -211,7 +211,6 @@ C:\Users\Nenad\Desktop\PDF\Pdf_project\bin\roslyn\System.Diagnostics.FileVersion
 C:\Users\Nenad\Desktop\PDF\Pdf_project\bin\roslyn\System.Diagnostics.Process.dll
 C:\Users\Nenad\Desktop\PDF\Pdf_project\bin\roslyn\System.Diagnostics.StackTrace.dll
 C:\Users\Nenad\Desktop\PDF\Pdf_project\bin\roslyn\System.IO.Compression.dll
-C:\Users\Nenad\Desktop\PDF\Pdf_project\bin\roslyn\System.IO.FileSystem.dll
 C:\Users\Nenad\Desktop\PDF\Pdf_project\bin\roslyn\System.IO.FileSystem.DriveInfo.dll
 C:\Users\Nenad\Desktop\PDF\Pdf_project\bin\roslyn\System.IO.FileSystem.Primitives.dll
 C:\Users\Nenad\Desktop\PDF\Pdf_project\bin\roslyn\System.IO.Pipes.dll
@@ -277,7 +276,6 @@ C:\Users\Nenad\Desktop\PDF\Pdf_project\obj\Debug\Pdf_project.csproj.CoreCompileI
 C:\Users\Nenad\Desktop\PDF\Pdf_project\obj\Debug\Pdf_project.csproj.CopyComplete
 C:\Users\Nenad\Desktop\PDF\Pdf_project\obj\Debug\Pdf_project.dll
 C:\Users\Nenad\Desktop\PDF\Pdf_project\obj\Debug\Pdf_project.pdb
-C:\Users\Nenad\Desktop\PDF\Pdf_project\bin\roslyn\System.Collections.Immutable.dll
 C:\Users\Nenad\Desktop\PDF\Pdf_project\obj\Debug\Pdf_project.csproj.ResolveComReference.cache
 C:\Users\Nenad\Desktop\PDF\Pdf_project\bin\Spire.Barcode.dll
 C:\Users\Nenad\Desktop\PDF\Pdf_project\bin\Spire.DataExport.dll
@@ -300,4 +298,5 @@ C:\Users\Nenad\Desktop\PDF\Pdf_project\bin\Spire.Pdf.xml
 C:\Users\Nenad\Desktop\PDF\Pdf_project\bin\Spire.PdfViewer.Forms.xml
 C:\Users\Nenad\Desktop\PDF\Pdf_project\bin\Spire.Presentation.xml
 C:\Users\Nenad\Desktop\PDF\Pdf_project\bin\Spire.XLS.xml
-C:\Users\Nenad\Desktop\PDF\Pdf_project\obj\Debug\Pdf_project.csprojResolveAssemblyReference.cache
+C:\Users\Nenad\Desktop\PDF\Pdf_project\bin\roslyn\System.Collections.Immutable.dll
+C:\Users\Nenad\Desktop\PDF\Pdf_project\bin\roslyn\System.IO.FileSystem.dll
