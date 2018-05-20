@@ -275,6 +275,7 @@
     <None Include="Properties\PublishProfiles\FolderProfile2.pubxml" />
     <Content Include="Views\Coming\Index.cshtml" />
     <Content Include="Template\template.docx" />
+    <None Include="Properties\PublishProfiles\FolderProfile3.pubxml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

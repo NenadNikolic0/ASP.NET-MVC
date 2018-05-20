@@ -6,7 +6,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <TimeStampOfAssociatedLegacyPublishXmlFile />
-    <_PublishTargetUrl>C:\Users\Nenad\Desktop\Publish</_PublishTargetUrl>
+    <_PublishTargetUrl>C:\Users\Nenad\Desktop\New</_PublishTargetUrl>
   </PropertyGroup>
   <ItemGroup>
     <File Include="ApplicationInsights.config">
@@ -61,10 +61,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>08/03/2014 20:33:56</publishTime>
     </File>
     <File Include="bin/Pdf_project.dll">
-      <publishTime>05/20/2018 20:52:49</publishTime>
+      <publishTime>05/20/2018 20:17:45</publishTime>
     </File>
     <File Include="bin/Pdf_project.pdb">
-      <publishTime>05/20/2018 20:52:49</publishTime>
+      <publishTime>05/20/2018 20:17:45</publishTime>
     </File>
     <File Include="bin/roslyn/csc.exe">
       <publishTime>09/21/2017 23:42:00</publishTime>
@@ -276,9 +276,6 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="Database/DSGVOModel.edmx.diagram">
       <publishTime>05/16/2018 21:35:27</publishTime>
     </File>
-    <File Include="Database/EntityModel.edmx.diagram">
-      <publishTime>05/07/2018 17:39:00</publishTime>
-    </File>
     <File Include="favicon.ico">
       <publishTime>05/02/2018 18:46:46</publishTime>
     </File>
@@ -343,7 +340,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>05/05/2018 12:21:02</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>05/20/2018 20:29:01</publishTime>
+      <publishTime>05/20/2018 20:09:05</publishTime>
     </File>
   </ItemGroup>
 </Project>

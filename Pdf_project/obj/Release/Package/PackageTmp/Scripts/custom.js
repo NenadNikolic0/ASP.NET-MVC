@@ -122,6 +122,9 @@ jQuery(document).ready(function () {
 
                         //Send data to web service
                         $.ajax({
+                            headers: {
+                                "Authorization": "Basic " + btoa("mhRwe3qz6Gkle8xe")
+                            },
                             url: "http://crm.hope.software/apiv1/customer/setDSVGO_ADV/" + localStorage["serialno"] + "/true",
                             type: "POST",
                             crossDomain: true,

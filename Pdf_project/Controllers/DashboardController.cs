@@ -387,7 +387,14 @@ namespace Pdf_project.Controllers
 
                 string pdfName = @Server.MapPath("~/Pdf/").ToString() + HashName + ".pdf";
 
-                wDoc.ExportAsFixedFormat(OutputFileName: pdfName, ExportFormat: WdExportFormat.wdExportFormatPDF, UseISO19005_1: true);
+                //wDoc.ExportAsFixedFormat(OutputFileName: pdfName, ExportFormat: WdExportFormat.wdExportFormatPDF, UseISO19005_1: true);
+                wDoc.ExportAsFixedFormat(
+                       pdfName,
+                       WdExportFormat.wdExportFormatPDF,
+                       OptimizeFor: WdExportOptimizeFor.wdExportOptimizeForOnScreen,
+                       BitmapMissingFonts: true, 
+                       DocStructureTags: false,
+                       UseISO19005_1: true);
 
                 wDoc.Close();
 
