@@ -36,7 +36,7 @@ namespace Pdf_project.Controllers
 
             //Declaring and instantiating hopeCRMEntities object (db instance)
 
-            using (DSGVOEntities db = new DSGVOEntities())
+            using (DSGVOEntities1 db = new DSGVOEntities1())
             {
 
                 db.Database.Connection.Open();

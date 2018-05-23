@@ -1,15 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="DSGVOModelStoreContainer" CdmEntityContainer="DSGVOEntities">
+  <EntityContainerMapping StorageEntityContainer="DSGVOModelStoreContainer" CdmEntityContainer="DSGVOEntities1">
     <EntitySetMapping Name="kundens">
       <EntityTypeMapping TypeName="DSGVOModel.kunden">
         <MappingFragment StoreEntitySet="kunden">
-          <ScalarProperty Name="id" ColumnName="id" />
-          <ScalarProperty Name="datachanged" ColumnName="datachanged" />
-          <ScalarProperty Name="contractname" ColumnName="contractname" />
-          <ScalarProperty Name="signeddate" ColumnName="signeddate" />
-          <ScalarProperty Name="contractsigned" ColumnName="contractsigned" />
-          <ScalarProperty Name="contractuser" ColumnName="contractuser" />
           <ScalarProperty Name="kunr" ColumnName="kunr" />
           <ScalarProperty Name="name1" ColumnName="name1" />
           <ScalarProperty Name="name2" ColumnName="name2" />
@@ -34,6 +28,12 @@
           <ScalarProperty Name="aktversion" ColumnName="aktversion" />
           <ScalarProperty Name="lastcheck" ColumnName="lastcheck" />
           <ScalarProperty Name="CM" ColumnName="CM" />
+          <ScalarProperty Name="contractuser" ColumnName="contractuser" />
+          <ScalarProperty Name="contractsigned" ColumnName="contractsigned" />
+          <ScalarProperty Name="signeddate" ColumnName="signeddate" />
+          <ScalarProperty Name="contractname" ColumnName="contractname" />
+          <ScalarProperty Name="datachanged" ColumnName="datachanged" />
+          <ScalarProperty Name="id" ColumnName="id" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

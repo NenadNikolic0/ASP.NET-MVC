@@ -2,10 +2,6 @@
 <Schema Namespace="DSGVOModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
   <EntityType Name="kunden">
     <Key>
-      <PropertyRef Name="lizend" />
-      <PropertyRef Name="hopeweb" />
-      <PropertyRef Name="feedback" />
-      <PropertyRef Name="CM" />
       <PropertyRef Name="id" />
     </Key>
     <Property Name="kunr" Type="Double" Nullable="false" />
@@ -39,7 +35,7 @@
     <Property Name="datachanged" Type="Boolean" />
     <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
   </EntityType>
-  <EntityContainer Name="DSGVOEntities" annotation:LazyLoadingEnabled="true">
+  <EntityContainer Name="DSGVOEntities1" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="kundens" EntityType="Self.kunden" />
   </EntityContainer>
 </Schema>

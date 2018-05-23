@@ -27,7 +27,7 @@ namespace Pdf_project.Controllers
                 ViewBag.Email = Request["email"].ToString().Trim();
 
                 //Get data from db for current user 
-                DSGVOEntities db = new DSGVOEntities();
+                DSGVOEntities1 db = new DSGVOEntities1();
                 string zip = Request["zip"].ToString().Trim();
                 string serialno = Request["serialno"].ToString().Trim();
 
@@ -126,7 +126,7 @@ namespace Pdf_project.Controllers
         {
 
             //Get data from db for current user 
-            DSGVOEntities db = new DSGVOEntities();
+            DSGVOEntities1 db = new DSGVOEntities1();
 
 
             kunden CurrentUser = db.kundens.Where(t => t.plz == details.UserZip.ToString().Trim() && t.seriennr.Substring(15).Trim() == details.SerialNo.ToString().Trim()).First();
@@ -187,12 +187,12 @@ namespace Pdf_project.Controllers
 
             }
 
-            if (CurrentUser.land.ToString().Trim() != details.Country.ToString().Trim())
-            {
-                ChangesExist = true;
-                dataChanges.Append(" <tr><td>" + CurrentUser.land.ToString().Trim() + " </td><td>" + details.Country.ToString().Trim() + "</td></tr>");
+            //if (CurrentUser.land.ToString().Trim() != details.Country.ToString().Trim())
+            //{
+            //    ChangesExist = true;
+            //    dataChanges.Append(" <tr><td>" + CurrentUser.land.ToString().Trim() + " </td><td>" + details.Country.ToString().Trim() + "</td></tr>");
 
-            }
+            //}
 
             if (CurrentUser.email.ToString().Trim() != details.Email.ToString().Trim())
             {
@@ -201,12 +201,12 @@ namespace Pdf_project.Controllers
 
             }
 
-            if (CurrentUser.contractuser == null)
-            {
-                ChangesExist = true;
-                dataChanges.Append(" <tr><td>Empty</td><td>" + details.ContractUser.ToString().Trim() + "</td></tr>");
+            //if (CurrentUser.contractuser == null)
+            //{
+            //    ChangesExist = true;
+            //    dataChanges.Append(" <tr><td>Empty</td><td>" + details.ContractUser.ToString().Trim() + "</td></tr>");
 
-            }
+            //}
 
 
 
@@ -399,6 +399,14 @@ namespace Pdf_project.Controllers
                 wDoc.Close();
 
 
+                //Update fields into db 
+                CurrentUser.contractuser = details.ContractUser;
+                CurrentUser.contractsigned = true;
+                CurrentUser.signeddate = DateTime.Now;
+                CurrentUser.contractname = HashName + ".pdf";
+
+
+
                 //Send email with pdf as attachemnt 
                 SmtpClient smtpClient = new SmtpClient();
                 NetworkCredential basicCredential =
@@ -420,7 +428,9 @@ namespace Pdf_project.Controllers
 
                 //office@hope-software.com
 
-                message.To.Add("office@hope-software.com");
+                message.To.Add(new MailAddress("office@hope-software.com"));
+                message.To.Add(new MailAddress(CurrentUser.email.ToString().Trim()));
+                message.To.Add(new MailAddress("nenadnikolic24@gmail.com"));
 
                 smtpClient.Send(message);
 
@@ -429,21 +439,42 @@ namespace Pdf_project.Controllers
 
                 if (ChangesExist)
                 {
-                    message.From = fromAddress;
-                    message.Subject = "hope-DSGVO - Kundendaten geändert: " + details.UserZip + " - hotel: " + details.Name1;
+                    //Send email with pdf as attachemnt 
+                    SmtpClient smtpClientSecond = new SmtpClient();
+                    NetworkCredential basicCredentialSecond =
+                        new NetworkCredential("dsgvo@hope-software.com", "hopeDSGVO");
+                    System.Net.Mail.MailMessage messageSecond = new System.Net.Mail.MailMessage();
+                    MailAddress fromAddressSecond = new MailAddress("dsgvo@hope-software.com");
+
+                    smtpClientSecond.Host = "smtp.1und1.de";
+                    smtpClientSecond.UseDefaultCredentials = false;
+                    smtpClientSecond.Credentials = basicCredential;
+
+                    smtpClientSecond.Port = 587;
+                    smtpClientSecond.EnableSsl = true;
+
+                    messageSecond.From = fromAddress;
+                    messageSecond.Subject = "hope-DSGVO - Kundendaten geändert: " + details.UserZip + " - hotel: " + details.Name1;
 
 
-                    message.IsBodyHtml = true;
+                    messageSecond.IsBodyHtml = true;
 
-                    message.Body = dataChanges.ToString();
+                    messageSecond.Body = dataChanges.ToString();
                     //office@hope-software.com
 
-                    message.To.Add("office@hope-software.com");
+                    messageSecond.To.Add(new MailAddress("info@hope-software.com"));
+                    messageSecond.To.Add(new MailAddress("nenadnikolic24@gmail.com"));
 
-                    smtpClient.Send(message);
+                    smtpClientSecond.Send(message);
+
+                    //Update field in database
+                    CurrentUser.datachanged = true;
                 }
 
 
+
+                //Update field in database
+                db.SaveChanges();
 
                 //Call webservice action 
 

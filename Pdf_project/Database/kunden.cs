@@ -14,7 +14,7 @@ namespace Pdf_project.Database
     
     public partial class kunden
     {
-        public Nullable<double> kunr { get; set; }
+        public double kunr { get; set; }
         public string name1 { get; set; }
         public string name2 { get; set; }
         public string strasse { get; set; }
@@ -39,5 +39,10 @@ namespace Pdf_project.Database
         public string lastcheck { get; set; }
         public bool CM { get; set; }
         public string contractuser { get; set; }
+        public Nullable<bool> contractsigned { get; set; }
+        public Nullable<System.DateTime> signeddate { get; set; }
+        public string contractname { get; set; }
+        public Nullable<bool> datachanged { get; set; }
+        public int id { get; set; }
     }
 }

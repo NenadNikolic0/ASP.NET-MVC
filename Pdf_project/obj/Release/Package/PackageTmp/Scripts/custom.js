@@ -121,11 +121,16 @@ jQuery(document).ready(function () {
                     if (data.Result == "true") {
 
                         //Send data to web service
+                        var username = "85c4f1a2e187f4a337b2df61bfd730";
+                        var password = "hope_a";
                         $.ajax({
-                            headers: {
-                                "Authorization": "Basic " + btoa("mhRwe3qz6Gkle8xe")
-                            },
-                            url: "http://crm.hope.software/apiv1/customer/setDSVGO_ADV/" + localStorage["serialno"] + "/true",
+                            //headers: {
+                            //    "Authorization": "Basic " + btoa("mhRwe3qz6Gkle8xe")
+                            //},
+                            //headers: {
+                            //    "Authorization": "Basic " + btoa(username + ":" + password)
+                            //},
+                            url: "https://crm.hope.software/apiv1/customer/setDSVGO_ADV/" + localStorage["serialno"] + "/true",
                             type: "POST",
                             crossDomain: true,
                             

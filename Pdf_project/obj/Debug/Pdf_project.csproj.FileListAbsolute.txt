@@ -300,3 +300,4 @@ C:\Users\Nenad\Desktop\PDF\Pdf_project\bin\Spire.Presentation.xml
 C:\Users\Nenad\Desktop\PDF\Pdf_project\bin\Spire.XLS.xml
 C:\Users\Nenad\Desktop\PDF\Pdf_project\bin\roslyn\System.Collections.Immutable.dll
 C:\Users\Nenad\Desktop\PDF\Pdf_project\bin\roslyn\System.IO.FileSystem.dll
+C:\Users\Nenad\Desktop\PDF\Pdf_project\obj\Debug\Pdf_project.csprojResolveAssemblyReference.cache
