@@ -156,6 +156,7 @@ namespace Pdf_project.Controllers
             {
                 ChangesExist = true;
                 dataChanges.Append(" <tr><td>" + CurrentUser.name1.ToString().Trim() + " </td><td>" + details.Name1.ToString().Trim() + "</td></tr>");
+                CurrentUser.name1 = details.Name1.ToString().Trim();
 
             }
 
@@ -163,6 +164,7 @@ namespace Pdf_project.Controllers
             {
                 ChangesExist = true;
                 dataChanges.Append(" <tr><td>" + CurrentUser.name2.ToString().Trim() + " </td><td>" + details.Name2.ToString().Trim() + "</td></tr>");
+                CurrentUser.name2 = details.Name2.ToString().Trim();
 
             }
 
@@ -170,6 +172,7 @@ namespace Pdf_project.Controllers
             {
                 ChangesExist = true;
                 dataChanges.Append(" <tr><td>" + CurrentUser.strasse.ToString().Trim() + " </td><td>" + details.Street.ToString().Trim() + "</td></tr>");
+                CurrentUser.strasse = details.Street.ToString().Trim();
 
             }
 
@@ -177,6 +180,7 @@ namespace Pdf_project.Controllers
             {
                 ChangesExist = true;
                 dataChanges.Append(" <tr><td>" + CurrentUser.plz.ToString().Trim() + " </td><td>" + details.Zip.ToString().Trim() + "</td></tr>");
+                CurrentUser.plz = details.Zip.ToString().Trim();
 
             }
 
@@ -184,6 +188,7 @@ namespace Pdf_project.Controllers
             {
                 ChangesExist = true;
                 dataChanges.Append(" <tr><td>" + CurrentUser.ort.ToString().Trim() + " </td><td>" + details.City.ToString().Trim() + "</td></tr>");
+                CurrentUser.ort = details.City.ToString().Trim();
 
             }
 
@@ -198,6 +203,7 @@ namespace Pdf_project.Controllers
             {
                 ChangesExist = true;
                 dataChanges.Append(" <tr><td>" + CurrentUser.email.ToString().Trim() + " </td><td>" + details.Email.ToString().Trim() + "</td></tr>");
+                CurrentUser.email = details.Email.ToString().Trim();
 
             }
 
@@ -391,8 +397,8 @@ namespace Pdf_project.Controllers
                 wDoc.ExportAsFixedFormat(
                        pdfName,
                        WdExportFormat.wdExportFormatPDF,
-                       OptimizeFor: WdExportOptimizeFor.wdExportOptimizeForOnScreen,
-                       BitmapMissingFonts: true, 
+                       OptimizeFor: WdExportOptimizeFor.wdExportOptimizeForPrint,
+                       BitmapMissingFonts: true,                      
                        DocStructureTags: false,
                        UseISO19005_1: true);
 
@@ -401,13 +407,14 @@ namespace Pdf_project.Controllers
 
                 //Update fields into db 
                 CurrentUser.contractuser = details.ContractUser;
+                CurrentUser.contactperson = details.ContractUser;
                 CurrentUser.contractsigned = true;
                 CurrentUser.signeddate = DateTime.Now;
                 CurrentUser.contractname = HashName + ".pdf";
 
 
 
-                //Send email with pdf as attachemnt 
+                //Send email with pdf as attachment to office 
                 SmtpClient smtpClient = new SmtpClient();
                 NetworkCredential basicCredential =
                     new NetworkCredential("dsgvo@hope-software.com", "hopeDSGVO");
@@ -429,10 +436,36 @@ namespace Pdf_project.Controllers
                 //office@hope-software.com
 
                 message.To.Add(new MailAddress("office@hope-software.com"));
-                message.To.Add(new MailAddress(CurrentUser.email.ToString().Trim()));
-                message.To.Add(new MailAddress("nenadnikolic24@gmail.com"));
+                
 
                 smtpClient.Send(message);
+
+
+                //Send email to customer 
+                SmtpClient smtpCustomer = new SmtpClient();
+                NetworkCredential basicCredentialCustomer =
+                    new NetworkCredential("dsgvo@hope-software.com", "hopeDSGVO");
+                System.Net.Mail.MailMessage messageCustomer = new System.Net.Mail.MailMessage();
+                MailAddress fromAddressCompany = new MailAddress("dsgvo@hope-software.com");
+
+                smtpCustomer.Host = "smtp.1und1.de";
+                smtpCustomer.UseDefaultCredentials = false;
+                smtpCustomer.Credentials = basicCredential;
+
+                smtpCustomer.Port = 587;
+                smtpCustomer.EnableSsl = true;
+
+                messageCustomer.From = fromAddressCompany;
+                messageCustomer.Subject = "hope-DSGVO - AV-Vertrag, Kunde: " + details.UserZip + " - hotel: " + details.Name1;
+
+                messageCustomer.Attachments.Add(new System.Net.Mail.Attachment(Server.MapPath("~/Pdf/").ToString() + HashName + ".pdf"));
+
+                //office@hope-software.com
+
+                messageCustomer.To.Add(new MailAddress(CurrentUser.email.ToString().Trim()));
+                
+                smtpCustomer.Send(messageCustomer);
+              
 
 
                 //Send email if user changed data on html form info@hope-software.com
@@ -463,7 +496,7 @@ namespace Pdf_project.Controllers
                     //office@hope-software.com
 
                     messageSecond.To.Add(new MailAddress("info@hope-software.com"));
-                    messageSecond.To.Add(new MailAddress("nenadnikolic24@gmail.com"));
+                    
 
                     smtpClientSecond.Send(message);
 
@@ -476,7 +509,7 @@ namespace Pdf_project.Controllers
                 //Update field in database
                 db.SaveChanges();
 
-                //Call webservice action 
+                
 
 
 

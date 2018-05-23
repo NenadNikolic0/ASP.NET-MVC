@@ -44,5 +44,6 @@ namespace Pdf_project.Database
         public string contractname { get; set; }
         public Nullable<bool> datachanged { get; set; }
         public int id { get; set; }
+        public string contactperson { get; set; }
     }
 }

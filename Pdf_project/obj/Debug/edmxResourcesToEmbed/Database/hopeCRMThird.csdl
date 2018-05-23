@@ -34,6 +34,7 @@
     <Property Name="contractname" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
     <Property Name="datachanged" Type="Boolean" />
     <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="contactperson" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
   </EntityType>
   <EntityContainer Name="DSGVOEntities1" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="kundens" EntityType="Self.kunden" />

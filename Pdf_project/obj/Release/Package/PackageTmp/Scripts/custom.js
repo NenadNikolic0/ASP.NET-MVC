@@ -131,7 +131,7 @@ jQuery(document).ready(function () {
                             //    "Authorization": "Basic " + btoa(username + ":" + password)
                             //},
                             url: "https://crm.hope.software/apiv1/customer/setDSVGO_ADV/" + localStorage["serialno"] + "/true",
-                            type: "POST",
+                            type: "GET",
                             crossDomain: true,
                             
                             dataType: "json",

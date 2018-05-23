@@ -34,6 +34,7 @@
     <Property Name="contractname" Type="nvarchar" MaxLength="255" />
     <Property Name="datachanged" Type="bit" />
     <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="contactperson" Type="nvarchar" MaxLength="100" />
   </EntityType>
   <EntityContainer Name="DSGVOModelStoreContainer">
     <EntitySet Name="kunden" EntityType="Self.kunden" Schema="dbo" store:Type="Tables" />
